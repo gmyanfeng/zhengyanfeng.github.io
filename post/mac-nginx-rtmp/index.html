@@ -1,0 +1,254 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mac搭建nginx+rtmp服务器 | fatpanda</title>
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1563357932601">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhengyanfeng.github.io">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1563357932601" alt="">
+  </a>
+  <h1 class="site-title">
+    fatpanda
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Mac搭建nginx+rtmp服务器
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-07-17 ·
+              </time>
+              
+                <a href="https://zhengyanfeng.github.io/tag/8kgtmp6F6R" class="post-tag">
+                  # mac rtmp
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <h2 id="安装homebrew">安装Homebrew</h2>
+<h3 id="1检查你的mac是否已经安装了homebrew">1.检查你的Mac是否已经安装了Homebrew</h3>
+<p>打开终端, 查看是否已经安装了Homebrew, 直接终端输入命令</p>
+<pre><code>man brew 
+
+</code></pre>
+<p>如果Mac已经安装了，终端会显示一些命令的提示信息，如下图。此时可以输入q退出，否则就安装Homebrew。</p>
+<p><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f7fmgs6m3cj20il0d50u8.jpg" alt="check brew install"></p>
+<h3 id="2安装homebrew">2.安装Homebrew</h3>
+<p>在终端输入：</p>
+<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+</code></pre>
+<p>以防命令有所更改建议去<a href="http://brew.sh/">Homebrew官网</a>（不过我还没有遇到过😊）</p>
+<p>升级Homebrew:</p>
+<pre><code>brew update
+</code></pre>
+<!-- more -->
+<h2 id="安装nginx">安装nginx</h2>
+<p>先clone nginx项目到本地</p>
+<pre><code>brew tap homebrew/nginx
+
+</code></pre>
+<p>安装</p>
+<pre><code>brew install nginx-full --with-rtmp-module
+
+//卸载：
+brew uninstall nginx
+
+</code></pre>
+<p>在终端输入：</p>
+<pre><code>nginx
+</code></pre>
+<p>在浏览器里打开 <a href="http://localhost:8080">http://localhost:8080</a>,如果出现下图的表示安装成功了</p>
+<p><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f7foiixu87j20fk06amxg.jpg" alt="nginx_success.jpeg"></p>
+<p>如果终端提示：</p>
+<p><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f7fomo6p7uj20g702kq3n.jpg" alt="nginx_error.jpg"></p>
+<p>则表示8080端口被占用了, 查看端口PID</p>
+<pre><code>lsof -i tcp:80
+
+</code></pre>
+<p>根据端口PID，kill掉，然后重新执行nginx，打开 <a href="http://localhost:8080">http://localhost:8080</a></p>
+<h2 id="配置nginx和rtmp">配置nginx和rtmp</h2>
+<p>使用下面的命令查看nginx安装的位置：</p>
+<pre><code>brew info nginx
+
+</code></pre>
+<p>查看nginx.conf的位置<br>
+<img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f7fp6w71yjj20g103t3z3.jpg" alt="location_nginx.jpg"></p>
+<p>点击Finder-&gt;前往-&gt;前往文件夹-&gt;输入/usr/local/etc/nginx/nginx.conf-&gt;用记事本工具(推荐Sublime Text)打开nginx.conf。</p>
+<p>在文件最后一行，加入如下配置，不要加在<mark>{ }<mark>里面</p>
+<pre><code># 在http节点后面加上rtmp配置：
+rtmp {
+    server {
+        listen 1935;
+        application rtmplive {
+            live on;
+            record off;
+        }
+    }
+}
+
+</code></pre>
+<p>如图：<br>
+<img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f7fpdsp3xsj20ro0pi0w8.jpg" alt="nginx_conf.jpg"></p>
+<p>然后重启nginx</p>
+<pre><code>nginx -s reload
+
+</code></pre>
+<h2 id="安装ffmpeg">安装<a href="https://zh.wikipedia.org/zh-hans/FFmpeg">ffmpeg</a></h2>
+<p>ffmpeg可以用其他方式安装，这里我用的是Homebrew安装（简单），输入命令</p>
+<pre><code>brew install ffmpeg
+
+//升级命令:
+brew upgrade ffmpeg
+
+//如果要卸载: 
+brew unstall ffmpeg
+
+</code></pre>
+<p>安装ffmpeg时间可能会长一点， 如果速度过慢，建议搭个梯子翻越长城. 不过也才50多M的东西， 耐心一点就好。 等待的时间里, 再安装一个支持rtmp协议的视频播放器<a href="http://www.videolan.org/vlc/">VLC</a></p>
+<h3 id="1利用ffmpeg推流">1.利用ffmpeg推流</h3>
+<p>我在桌面中放一个mp4格式的文件，执行推流命令：</p>
+<pre><code>ffmpeg -re -i /Users/yanfeng/Desktop/ios.mp4 -vcodec libx264 -acodec aac -strict -2 -f flv rtmp://localhost:1935/rtmplive/room
+
+//如果提示没有权限时加入sudo：
+sudo ffmpeg -re -i /Users/yanfeng/Desktop/ios.mp4 -vcodec libx264 -acodec aac -strict -2 -f flv rtmp://localhost:1935/rtmplive/room
+
+</code></pre>
+<p>将视频推流到本地的服务器后，打开VLC，然后点击菜单File-&gt;Open Network 输入：</p>
+<pre><code>rtmp://localhost:1935/rtmplive/room
+
+</code></pre>
+<p>这样就可以看到效果了，如图：</p>
+<p><img src="http://ww3.sinaimg.cn/large/7853084cjw1fabqzpuetgg20w00k0nph.gif" alt="vlc_play.gif"></p>
+<ul>
+<li>推荐一个Mac下的GIF制作工具<a href="http://www.gifrocket.com/">gifrocket</a></li>
+</ul>
+<hr>
+<h2 id="利用ffmpeg转换视频格式">利用ffmpeg转换视频格式</h2>
+<p>在桌面准备一个flv格式的视频，利用ffmpeg将其转换成格式为mp4的视频，并设置其码率为640kbps。在终端输入命令：</p>
+<pre><code>ffmpeg -i /Users/yanfeng/Desktop/转码.flv -b:v 640k /Users/yanfeng/Desktop/转码.mp4
+
+</code></pre>
+<p><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f7fstz0uh1j20l40fhwk9.jpg" alt="covert_mp4.jpg"><br>
+<img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f7fsudxa7kj20c806mmx6.jpg" alt="covert_success.jpg"></p>
+<h2 id="mark记得把文章中的地址路径换成自己mac的路径mark"><mark><em><strong>记得把文章中的地址路径换成自己Mac的路径</strong></em><mark></h2>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhengyanfeng.github.io/post/hello-gridea">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '602216f311fac9383a87',
+    clientSecret: '6284ed4af0af2547c053a4dd8e71a5783b4c3569',
+    repo: 'zhengyanfeng.github.io',
+    owner: 'zhengyanfeng',
+    admin: ['zhengyanfeng'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhengyanfeng.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
