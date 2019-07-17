@@ -1,0 +1,303 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>iOS单例设计模式 | fatpanda</title>
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1563360049026">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhengyanfeng.github.io">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1563360049026" alt="">
+  </a>
+  <h1 class="site-title">
+    fatpanda
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zhengyanfeng" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/awesomeyanfeng" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2309146301/profile?is_hot=1" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              iOS单例设计模式
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-07-17 ·
+              </time>
+              
+                <a href="https://zhengyanfeng.github.io/tag/4NEJut6A4" class="post-tag">
+                  # iOS
+                </a>
+              
+                <a href="https://zhengyanfeng.github.io/tag/1E1V_asdHk" class="post-tag">
+                  # 单例
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>在iOS的开发中，单例设计模式（Singleton Pattern）是用得最多的设计模式之一了。在iOS的SDK中，很多地方都可以看到它的踪影。例如UIApplication, 我们可以在任何地方调用sharedApplication方法来获取当前运行的UIApplication实例。对于这个设计模式的优缺点我们这里就不讨论了，我们着重放在如何实现。</p>
+<p>文章用到的Demo源码在<a href="https://github.com/zhengyanfeng/Blog_Work_Project/tree/master">这里</a>.</p>
+<h3 id="objective-c">Objective-C</h3>
+<p>在ARC模式下，我们创建一个单例类InfoManager</p>
+<pre><code>//InfoManager.h
+#import &lt;Foundation/Foundation.h&gt;
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface InfoManager : NSObject
+
++(instancetype)shareInstance;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+</code></pre>
+<pre><code>//InfoManager.m
+#import &quot;InfoManager.h&quot;
+
+static InfoManager *_infoManager = nil;
+
+@implementation InfoManager
+
++(instancetype)shareInstance{
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        _infoManager = [[self alloc] init];
+    });
+    
+    return _infoManager;
+}
+
++(instancetype)allocWithZone:(struct _NSZone *)zone{
+    
+    @synchronized (_infoManager) {
+        if (_infoManager == nil) {
+            _infoManager = [super allocWithZone:zone];
+        }
+    }
+    return _infoManager;
+}
+
+-(instancetype)init{
+    
+    @synchronized (self) {
+        self = [super init];
+    }
+    
+    return self;
+}
+
+@end
+</code></pre>
+<p>在NON-ARC模式下，在实现文件要重写其他的方法</p>
+<pre><code>//InfoManager.m
+#import &quot;InfoManager-NonARC.h&quot;
+
+static InfoManager_NonARC *_infoManager = nil;
+
+@implementation InfoManager_NonARC
+
++(instancetype)shareInstance{
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        _infoManager = [[self alloc] init];
+    });
+    
+    return _infoManager;
+}
+
++(instancetype)allocWithZone:(struct _NSZone *)zone{
+    
+    @synchronized (_infoManager) {
+        if (_infoManager == nil) {
+            _infoManager = [super allocWithZone:zone];
+        }
+    }
+    return _infoManager;
+}
+
+-(instancetype)init{
+    
+    @synchronized (self) {
+        self = [super init];
+    }
+    
+    return self;
+}
+
+-(instancetype)retain{
+    return self;
+}
+
+-(NSUInteger)retainCount{
+    return UINT_MAX;
+}
+
+-(oneway void)release{
+    
+}
+
+-(instancetype)autorelease{
+    return self;
+}
+
+@end
+</code></pre>
+<p>如果要给某个类关闭ARC，如图在TARGETS -&gt; Build Phases -&gt; Compile Sources 里给相应的class加 <strong>-fno-objc-arc</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13280985-7489e4c1a1c7a8c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WX20180904-143419@2x.png"></p>
+<p>如何在Swift下创建一个单例</p>
+<pre><code>//  LocationManager.swift
+import UIKit
+
+class LocationManager: NSObject {
+    
+    static let shared = LocationManager()
+    
+    var hasLocation: Bool?
+    
+    private override init() {
+        
+    }
+    
+    func requestForLocation(){
+
+        hasLocation = true
+        print(&quot;Location granted&quot;)
+    }
+
+}
+</code></pre>
+<p>我们创建这个单例实例的话代码如下</p>
+<pre><code>LocationManager.shared.requestForLocation()
+</code></pre>
+<p>如果尝试使用init的方法就会报错<br>
+<img src="https://upload-images.jianshu.io/upload_images/13280985-c011b2be9c06f088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WX20180904-144831@2x.png"></p>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhengyanfeng.github.io/post/mac-nginx-rtmp">
+              <h3 class="post-title">
+                Mac搭建nginx+rtmp服务器
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '602216f311fac9383a87',
+    clientSecret: '6284ed4af0af2547c053a4dd8e71a5783b4c3569',
+    repo: 'zhengyanfeng.github.io',
+    owner: 'zhengyanfeng',
+    admin: ['zhengyanfeng'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhengyanfeng.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
