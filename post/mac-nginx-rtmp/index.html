@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mac搭建nginx+rtmp服务器 | fatpanda</title>
-<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1563357932601">
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1563359637862">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zhengyanfeng.github.io">
-  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1563357932601" alt="">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1563359637862" alt="">
   </a>
   <h1 class="site-title">
     fatpanda
@@ -58,9 +58,21 @@
   <div class="social-container">
     
       
-    
+        <a href="https://github.com/zhengyanfeng" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
       
     
+      
+        <a href="https://twitter.com/awesomeyanfeng" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2309146301/profile?is_hot=1" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
       
     
       
@@ -92,14 +104,12 @@
 <h3 id="1检查你的mac是否已经安装了homebrew">1.检查你的Mac是否已经安装了Homebrew</h3>
 <p>打开终端, 查看是否已经安装了Homebrew, 直接终端输入命令</p>
 <pre><code>man brew 
-
 </code></pre>
 <p>如果Mac已经安装了，终端会显示一些命令的提示信息，如下图。此时可以输入q退出，否则就安装Homebrew。</p>
 <p><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f7fmgs6m3cj20il0d50u8.jpg" alt="check brew install"></p>
 <h3 id="2安装homebrew">2.安装Homebrew</h3>
 <p>在终端输入：</p>
 <pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-
 </code></pre>
 <p>以防命令有所更改建议去<a href="http://brew.sh/">Homebrew官网</a>（不过我还没有遇到过😊）</p>
 <p>升级Homebrew:</p>
@@ -109,7 +119,6 @@
 <h2 id="安装nginx">安装nginx</h2>
 <p>先clone nginx项目到本地</p>
 <pre><code>brew tap homebrew/nginx
-
 </code></pre>
 <p>安装</p>
 <pre><code>brew install nginx-full --with-rtmp-module
@@ -127,19 +136,18 @@ brew uninstall nginx
 <p><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f7fomo6p7uj20g702kq3n.jpg" alt="nginx_error.jpg"></p>
 <p>则表示8080端口被占用了, 查看端口PID</p>
 <pre><code>lsof -i tcp:80
-
 </code></pre>
 <p>根据端口PID，kill掉，然后重新执行nginx，打开 <a href="http://localhost:8080">http://localhost:8080</a></p>
 <h2 id="配置nginx和rtmp">配置nginx和rtmp</h2>
 <p>使用下面的命令查看nginx安装的位置：</p>
 <pre><code>brew info nginx
-
 </code></pre>
 <p>查看nginx.conf的位置<br>
 <img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f7fp6w71yjj20g103t3z3.jpg" alt="location_nginx.jpg"></p>
 <p>点击Finder-&gt;前往-&gt;前往文件夹-&gt;输入/usr/local/etc/nginx/nginx.conf-&gt;用记事本工具(推荐Sublime Text)打开nginx.conf。</p>
 <p>在文件最后一行，加入如下配置，不要加在<mark>{ }<mark>里面</p>
-<pre><code># 在http节点后面加上rtmp配置：
+<pre><code>	
+# 在http节点后面加上rtmp配置：
 rtmp {
     server {
         listen 1935;
@@ -149,13 +157,12 @@ rtmp {
         }
     }
 }
-
+	
 </code></pre>
 <p>如图：<br>
 <img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f7fpdsp3xsj20ro0pi0w8.jpg" alt="nginx_conf.jpg"></p>
 <p>然后重启nginx</p>
 <pre><code>nginx -s reload
-
 </code></pre>
 <h2 id="安装ffmpeg">安装<a href="https://zh.wikipedia.org/zh-hans/FFmpeg">ffmpeg</a></h2>
 <p>ffmpeg可以用其他方式安装，这里我用的是Homebrew安装（简单），输入命令</p>
