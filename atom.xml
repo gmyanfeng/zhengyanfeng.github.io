@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhengyanfeng.github.io</id>
     <title>fatpanda</title>
-    <updated>2019-07-22T16:46:41.306Z</updated>
+    <updated>2019-07-22T16:58:45.271Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhengyanfeng.github.io"/>
     <link rel="self" href="https://zhengyanfeng.github.io/atom.xml"/>
@@ -16,6 +16,10 @@
         <link href="https://zhengyanfeng.github.io/post/flutter-xue-xi-udacity-ke-cheng">
         </link>
         <updated>2019-07-17T17:22:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>什么是Flutter？这是一个Google出的一个跨平台的框架，支持Android和iOS。大家可以去搜索下，这个文章系列是记录我的学习过程。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>什么是Flutter？这是一个Google出的一个跨平台的框架，支持Android和iOS。大家可以去搜索下，这个文章系列是记录我的学习过程。</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[macOS app 推荐 （免费）]]></title>
@@ -23,6 +27,10 @@
         <link href="https://zhengyanfeng.github.io/post/macos-app-tui-jian-mian-fei">
         </link>
         <updated>2019-07-17T10:41:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>今天介绍一个没啥用，但是还蛮好玩的一个macOS 的 app （其实还是有点用，至少可以看CPU的使用率）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>今天介绍一个没啥用，但是还蛮好玩的一个macOS 的 app （其实还是有点用，至少可以看CPU的使用率）</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[iOS单例设计模式]]></title>
@@ -30,6 +38,12 @@
         <link href="https://zhengyanfeng.github.io/post/ios-dan-li-she-ji-mo-shi">
         </link>
         <updated>2019-07-17T10:38:18.000Z</updated>
+        <summary type="html"><![CDATA[<p>在iOS的开发中，单例设计模式（Singleton Pattern）是用得最多的设计模式之一了。在iOS的SDK中，很多地方都可以看到它的踪影。例如UIApplication, 我们可以在任何地方调用sharedApplication方法来获取当前运行的UIApplication实例。对于这个设计模式的优缺点我们这里就不讨论了，我们着重放在如何实现。</p>
+<p>文章用到的Demo源码在<a href="https://github.com/zhengyanfeng/Blog_Work_Project/tree/master">这里</a>.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在iOS的开发中，单例设计模式（Singleton Pattern）是用得最多的设计模式之一了。在iOS的SDK中，很多地方都可以看到它的踪影。例如UIApplication, 我们可以在任何地方调用sharedApplication方法来获取当前运行的UIApplication实例。对于这个设计模式的优缺点我们这里就不讨论了，我们着重放在如何实现。</p>
+<p>文章用到的Demo源码在<a href="https://github.com/zhengyanfeng/Blog_Work_Project/tree/master">这里</a>.</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Mac搭建nginx+rtmp服务器]]></title>
@@ -43,15 +57,6 @@
 <pre><code>man brew 
 </code></pre>
 <p>如果Mac已经安装了，终端会显示一些命令的提示信息，如下图。此时可以输入q退出，否则就安装Homebrew。</p>
-<p><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f7fmgs6m3cj20il0d50u8.jpg" alt="check brew install"></p>
-<h3 id="2安装homebrew">2.安装Homebrew</h3>
-<p>在终端输入：</p>
-<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-<p>以防命令有所更改建议去<a href="http://brew.sh/">Homebrew官网</a>（不过我还没有遇到过😊）</p>
-<p>升级Homebrew:</p>
-<pre><code>brew update
-</code></pre>
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="安装homebrew">安装Homebrew</h2>
 <h3 id="1检查你的mac是否已经安装了homebrew">1.检查你的Mac是否已经安装了Homebrew</h3>
@@ -59,15 +64,6 @@
 <pre><code>man brew 
 </code></pre>
 <p>如果Mac已经安装了，终端会显示一些命令的提示信息，如下图。此时可以输入q退出，否则就安装Homebrew。</p>
-<p><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f7fmgs6m3cj20il0d50u8.jpg" alt="check brew install"></p>
-<h3 id="2安装homebrew">2.安装Homebrew</h3>
-<p>在终端输入：</p>
-<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-<p>以防命令有所更改建议去<a href="http://brew.sh/">Homebrew官网</a>（不过我还没有遇到过😊）</p>
-<p>升级Homebrew:</p>
-<pre><code>brew update
-</code></pre>
 ]]></content>
     </entry>
     <entry>
