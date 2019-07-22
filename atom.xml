@@ -2,14 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhengyanfeng.github.io</id>
     <title>fatpanda</title>
-    <updated>2019-07-17T10:41:58.408Z</updated>
+    <updated>2019-07-22T11:37:53.672Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhengyanfeng.github.io"/>
     <link rel="self" href="https://zhengyanfeng.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>学而时习之</subtitle>
     <logo>https://zhengyanfeng.github.io/images/avatar.png</logo>
     <icon>https://zhengyanfeng.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, fatpanda</rights>
+    <entry>
+        <title type="html"><![CDATA[Flutter学习-HelloWorld]]></title>
+        <id>https://zhengyanfeng.github.io/post/flutter-xue-xi-udacity-ke-cheng</id>
+        <link href="https://zhengyanfeng.github.io/post/flutter-xue-xi-udacity-ke-cheng">
+        </link>
+        <updated>2019-07-17T17:22:49.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[macOS app 推荐 （免费）]]></title>
         <id>https://zhengyanfeng.github.io/post/macos-app-tui-jian-mian-fei</id>
