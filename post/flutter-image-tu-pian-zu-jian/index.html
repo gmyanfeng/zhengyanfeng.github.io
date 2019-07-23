@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Flutter-Container 容器组件 | fatpanda</title>
+<title>Flutter-Image 图片组件 | fatpanda</title>
 <link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1563882523541">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -86,7 +86,7 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Flutter-Container 容器组件
+              Flutter-Image 图片组件
             </h2>
             <div class="post-info">
               <time class="post-time">
@@ -99,13 +99,15 @@
               
             </div>
             
-              <div class="post-feature-image" style="background-image: url('https://zhengyanfeng.github.io/post-images/flutter-container-rong-qi-zu-jian.png')">
-              </div>
-            
             <div class="post-content">
-              <p>相当于 HTML 中的 div 标签</p>
+              <p>导入图片的方式有以下几种：</p>
+<ul>
+<li>Image.asset : 加载项目资源目录中的图片，用的是相对路径，导入后会增加包的体积。</li>
+<li>Image.network : 网络图片资源</li>
+<li>Image.file : 加载本地图片，使用的是绝对路径，和包大小无关</li>
+<li>Image.memory : 加载 Uint8List 资源的图片</li>
+</ul>
 <!-- more -->
-<h2 id="alignment">Alignment</h2>
 <pre><code>import 'package:flutter/material.dart';
 
 void main() =&gt; runApp(MyApp());
@@ -115,106 +117,68 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Container Demo',
-      home:Scaffold(
+      title: 'Flutter Demo',
 
-        appBar: AppBar(
-          title: Text('Container Demo'),
-        ),
-
+      home: Scaffold(
         body: Center(
           child: Container(
-            child: new Text(
-                'Hello, fat panda',
-                style: TextStyle(fontSize: 40),
+            child: new Image.network(
+              'https://flutter-io.cn/favicon.ico',
+              scale: 1.0,
             ),
 
-            alignment: Alignment.topLeft,
-          ),
-        ),
-      )
-    );
+            width: 300,
+            height: 200,
+            color: Colors.lightBlue,
+          ), //child
+        ), //body
+      ), //home
+    ); //MaterialApp
   }
-}
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563875882084.png" alt="container"></p>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563881541959.png" alt="image load"></p>
+<h2 id="fit-属性">fit 属性</h2>
+<p>fit 属性控制图片的拉伸和挤压</p>
 <ul>
-<li>bottomCenter：底部居中对齐</li>
-<li>bottomLeft：底部左对齐</li>
-<li>bottomRight：底部右对齐</li>
-<li>center：居中对齐</li>
-<li>centerLeft：居中左对齐</li>
-<li>centerRight：居中右对齐</li>
-<li>topLeft：顶部左对齐</li>
-<li>topCenter：顶部居中对齐</li>
-<li>topRight：顶部右对齐</li>
+<li>BoxFit.fill : 全图显示，图片会被拉伸，充满父容器</li>
+<li>BoxFit.contain : 显示原比例</li>
+<li>BoxFit.cover : 显示可能被拉伸，裁切，充满整个容器而且不会变形</li>
+<li>BoxFit.fitWidth : 宽度充满，显示可能拉伸，可能裁切</li>
+<li>BoxFit.fitHeight : 高度充满，显示可能拉伸，可能裁切</li>
+<li>BoxFit.scaleDown : 效果和 contain 相似，但是不允许显示超过图片的大小</li>
 </ul>
-<h2 id="宽高和颜色属性">宽，高和颜色属性</h2>
+<h2 id="图片的混合模式">图片的混合模式</h2>
+<p>图片混合模式（colorBlendMode）和 color 属性配合使用，能让图片改变颜色。</p>
+<pre><code>child: new Image.network(
+              'https://flutter-io.cn/favicon.ico',
+              scale: 1.0,
+              color: Colors.greenAccent,
+              colorBlendMode: BlendMode.colorBurn,
+            ),
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563882133332.png" alt="colorBlendMode"></p>
+<h2 id="repeat-图片重复">repeat 图片重复</h2>
+<ul>
+<li>ImageRepeat.repeat : 横向和纵向都进行重复，直到铺满</li>
+<li>ImageRepeat.repeatX : 横向铺满</li>
+<li>ImageRepeat.repeatY : 纵向铺满</li>
+</ul>
 <pre><code>child: Container(
-            child: new Text(
-                'Hello, fat panda',
-                style: TextStyle(fontSize: 40),
+            child: new Image.network(
+              'https://flutter-io.cn/favicon.ico',
+              scale: 1.0,
+              color: Colors.greenAccent,
+              colorBlendMode: BlendMode.colorBurn,
+
+              repeat: ImageRepeat.repeat,
             ),
 
-            alignment: Alignment.center,
-
-            width: 500,
-            height: 400,
-            color: Colors.redAccent,
-          ),
+            width: 600,
+            height: 900,
+            color: Colors.lightBlue,
+          ), //child
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563876294861.png" alt="other property"></p>
-<h2 id="padding-内边距">padding 内边距</h2>
-<p>Container 边缘和 child 内容的距离。padding 为 100：</p>
-<pre><code>padding: const EdgeInsets.all(100),
-</code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563878135367.png" alt="padding_100"></p>
-<p>上边距：40，左边距为：20</p>
-<pre><code>// 从命名 LTRB 可以看出分别时 left,top,right,bottom
-padding: const EdgeInsets.fromLTRB(20, 40, 0, 0),
-</code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563878376413.png" alt="padding"></p>
-<h2 id="margin">margin</h2>
-<p>外边距，container 和 外部元素的距离</p>
-<pre><code>margin: const EdgeInsets.all(40),
-</code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563878920382.png" alt="margin"></p>
-<h2 id="decoration">decoration</h2>
-<p>decoration 是 container 的修饰器，设置背景和边框。<br>
-BoxDecoration 给背景加入一个渐变的效果（<em><strong>如果设置了 decoration，就不能设置 color 属性了，这样会产生冲突</strong></em>）</p>
-<pre><code>body: Center(
-          child: Container(
-            child: new Text(
-                'Hello, fat panda',
-                style: TextStyle(fontSize: 40, backgroundColor: Colors.lightBlue),
-            ),
-
-            alignment: Alignment.center,
-
-            width: 500,
-            height: 400,
-//            padding: const EdgeInsets.all(100),
-            padding: const EdgeInsets.fromLTRB(20, 40, 0, 0),
-            
-            margin: const EdgeInsets.all(40),
-
-            decoration: new BoxDecoration(
-              gradient: const LinearGradient(colors: [Colors.lightBlue, Colors.greenAccent, Colors.purple])
-            ),
-          ),
-        ),
-</code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563879361311.png" alt="boxdecoration"></p>
-<p><em><strong>记得设置 decoration 要把设置背景颜色的代码去除</strong></em></p>
-<h2 id="border-边框">border 边框</h2>
-<pre><code>decoration: new BoxDecoration(
-              gradient: const LinearGradient(colors: [Colors.lightBlue, Colors.greenAccent, Colors.purple]),
-
-              border: Border.all(width: 5.0, color: Colors.red)
-            ),
-</code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563879689295.png" alt="border"></p>
-<p>示例代码在 <a href="https://github.com/zhengyanfeng/Flutter-Learning">Github</a></p>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563882481482.png" alt="image repeat"></p>
 
             </div>
           </article>
@@ -223,9 +187,9 @@ BoxDecoration 给背景加入一个渐变的效果（<em><strong>如果设置了
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://zhengyanfeng.github.io/post/flutter-text-widget-wen-ben-zu-jian-de-shi-yong">
+            <a href="https://zhengyanfeng.github.io/post/flutter-container-rong-qi-zu-jian">
               <h3 class="post-title">
-                Flutter-Text Widget 文本组件的使用
+                Flutter-Container 容器组件
               </h3>
             </a>
           </div>
