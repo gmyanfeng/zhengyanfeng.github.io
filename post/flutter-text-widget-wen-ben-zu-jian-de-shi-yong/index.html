@@ -1,0 +1,254 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flutter-Text Widget 文本组件的使用 | fatpanda</title>
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1563870426594">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhengyanfeng.github.io">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1563870426594" alt="">
+  </a>
+  <h1 class="site-title">
+    fatpanda
+  </h1>
+  <p class="site-description">
+    学而时习之
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zhengyanfeng" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/awesomeyanfeng" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2309146301/profile?is_hot=1" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Flutter-Text Widget 文本组件的使用
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-07-23 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <h2 id="在-flutter-里面一切皆组件widget">在 Flutter 里面一切皆组件（Widget）。</h2>
+<p>上篇文章我们运行了一个简单的 Hello World 程序，里面已经包含了一个文本组件，不过我们用的都是默认的属性。</p>
+<h2 id="text-widget">Text Widget</h2>
+<p>我们重新创建一个新的项目，删除默认的模板代码，实现一个 Text Widget，代码如下：</p>
+<pre><code>import 'package:flutter/material.dart';
+
+//主函数
+void main() =&gt; runApp(MyApp());
+//声明 MyApp 类
+class MyApp extends StatelessWidget{
+  // 重写 build 方法
+  @override
+  Widget build(BuildContext context){
+    //返回一个Material 风格组件
+    return MaterialApp(
+      title: 'Welcome to Flutter',
+      home: Scaffold(
+        appBar: AppBar(
+          //app bar 的 title， 可以类比于 iOS 的 navigationbar 的 title
+          title: Text('Text Widget 文本组件'),
+        ),
+        // 添加一个 Hello World 的文本
+        body: Center(
+          child: Text('Hello World，这是第一个程序，这里是 zhengyanfeng.github.io 博客'),
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+<h2 id="textalign-文本对齐方式">TextAlign 文本对齐方式</h2>
+<ul>
+<li>center：居中对齐</li>
+<li>left：左对齐</li>
+<li>right：右对齐</li>
+<li>start：以开始位置对齐</li>
+<li>end：以文本结尾对齐</li>
+</ul>
+<pre><code>// 添加一个 Hello World 的文本
+        body: Center(
+          child: Text(
+              'Hello World，这是第一个程序，这里是 zhengyanfeng.github.io 博客',
+               textAlign: TextAlign.center,
+          ),
+        ),
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563868272354.png" alt="text align center"><br>
+其他的效果可以自己修改看看。</p>
+<h2 id="maxlines-属性">maxLines 属性</h2>
+<p>设置显示的行数，如果我们设置为1，就是只能单行显示</p>
+<pre><code>// 添加一个 Hello World 的文本
+        body: Center(
+          child: Text(
+              'Hello World，这是第一个程序，这里是 zhengyanfeng.github.io 博客',
+               textAlign: TextAlign.center,
+               maxLines: 1,
+          ),
+        ),
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563868431388.png" alt="maxline single"></p>
+<h2 id="overflow-属性">overflow 属性</h2>
+<p>当文字超出文本框时，如何处理？</p>
+<ul>
+<li>clip：切断，省略剩下的文字</li>
+<li>ellipsis：显示省略号</li>
+<li>fade：有一个渐变消失的效果</li>
+</ul>
+<pre><code>// 添加一个 Hello World 的文本
+        body: Center(
+          child: Text(
+              'Hello World，这是第一个程序，这里是 zhengyanfeng.github.io 博客',
+               textAlign: TextAlign.center,
+               maxLines: 1,
+               overflow: TextOverflow.fade,
+          ),
+        ),
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563870029718.png" alt="overflow fade"></p>
+<h2 id="style-属性">style 属性</h2>
+<p>这个属性比较多，具体可以查询文档。下面实现字体大小为25.0，颜色为粉色，并且有个下划线。</p>
+<pre><code>// 添加一个 Hello World 的文本
+        body: Center(
+          child: Text(
+              'Hello World，这是第一个程序，这里是 zhengyanfeng.github.io 博客',
+               textAlign: TextAlign.center,
+               maxLines: 1,
+               overflow: TextOverflow.ellipsis,
+
+               style: TextStyle(
+                 fontSize: 25.0,
+                 color: Color.fromARGB(255, 255, 150, 150),
+                 decoration: TextDecoration.underline,
+                 decorationStyle: TextDecorationStyle.solid,
+               ),
+          ),
+        ),
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563870335067.png" alt="style property"></p>
+<p>可以参考这个网址：<a href="https://docs.flutter.io/flutter/painting/TextStyle-class.html">https://docs.flutter.io/flutter/painting/TextStyle-class.html</a></p>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhengyanfeng.github.io/post/flutter-xue-xi-udacity-ke-cheng">
+              <h3 class="post-title">
+                Flutter学习-HelloWorld
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '602216f311fac9383a87',
+    clientSecret: '6284ed4af0af2547c053a4dd8e71a5783b4c3569',
+    repo: 'zhengyanfeng.github.io',
+    owner: 'zhengyanfeng',
+    admin: ['zhengyanfeng'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhengyanfeng.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
