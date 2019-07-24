@@ -1,0 +1,370 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flutter-ListView 列表组件 | fatpanda</title>
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1563958508599">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhengyanfeng.github.io">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1563958508599" alt="">
+  </a>
+  <h1 class="site-title">
+    fatpanda
+  </h1>
+  <p class="site-description">
+    学而时习之
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zhengyanfeng" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/awesomeyanfeng" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2309146301/profile?is_hot=1" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Flutter-ListView 列表组件
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-07-24 ·
+              </time>
+              
+                <a href="https://zhengyanfeng.github.io/tag/X7eMu99QN" class="post-tag">
+                  # flutter
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>ListView 就是相当于 iOS 中的 UITableView。简单实现一个列表的组件</p>
+<!-- more -->
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('ListView Demo'),
+        ),
+
+        body: ListView(
+          children: &lt;Widget&gt;[
+            ListTile(
+              leading: Icon(Icons.access_time),
+              title: Text('access_time'),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.account_balance),
+              title: Text('account_balance'),
+            ),
+          ],
+        )
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563947580934.png" alt="listview"></p>
+<p>因为列表是需要多个数据源，所有使用 children widget 数组。</p>
+<h2 id="横向列表">横向列表</h2>
+<p>ListView 加上一个 ScrollDirection 属性，可以限定滚动的方向</p>
+<pre><code>
+//横向滚动
+        body: Center(    // 1
+          child: Container(  // 2
+            height: 300,
+            child: ListView(
+              scrollDirection: Axis.horizontal,  // 3
+              children: &lt;Widget&gt;[
+                Container(
+                  width: 150,
+                  color: Colors.lightBlue,
+                ),
+
+                Container(
+                  width: 150,
+                  color: Colors.amber,
+                ),
+
+                Container(
+                  width: 150,
+                  color: Colors.deepOrange,
+                ),
+
+                Container(
+                  width: 150,
+                  color: Colors.deepPurpleAccent,
+                ),
+
+                Container(
+                  width: 150,
+                  color: Colors.redAccent,
+                ),
+              ],
+            ),
+          ),
+        ),
+				
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563948527532.png" alt="listview horizontal"></p>
+<ol>
+<li>Center 组件让横向列表居中</li>
+<li>Container 容器组件，相当于 iOS 中的 UIView</li>
+<li>ScrollDirection 指定 ListView 的滚动方向</li>
+</ol>
+<h2 id="拆分减少代码的嵌套">拆分，减少代码的嵌套</h2>
+<pre><code>
+//横向滚动
+body: Center(    //1.让横向列表居中
+    child: Container(
+    height: 300,
+    child: MyList(),
+    ),
+  ),
+),
+			
+			
+	
+	
+class MyList extends StatelessWidget{
+
+@override
+Widget build(BuildContext context) {
+// TODO: implement build
+return ListView(
+		scrollDirection: Axis.horizontal,
+		children: &lt;Widget&gt;[
+			Container(
+				width: 150,
+				color: Colors.lightGreenAccent,
+			),
+
+			Container(
+				width: 150,
+				color: Colors.amber,
+			),
+
+			Container(
+				width: 150,
+				color: Colors.deepOrange,
+			),
+
+			Container(
+				width: 150,
+				color: Colors.deepPurpleAccent,
+			),
+
+			Container(
+				width: 150,
+				color: Colors.redAccent,
+			),
+		],
+
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563949790423.png" alt="my listview class"></p>
+<h2 id="动态列表">动态列表</h2>
+<p>ListView 在实际的使用中，一般是根据数据动态调整的</p>
+<p>List 是 Dart 语言中的数组，声明方式：</p>
+<pre><code>
+var myList = List()  // 长度不固定
+var myList = List(2)  // 长度为2
+var myList = List&lt;String&gt;()  // 声明 string 类型的数组
+var myList = [1,2,3]   // 直接赋值
+
+</code></pre>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp(
+
+  items: List&lt;String&gt;.generate(1000, (i) =&gt; 'item $i')
+
+));
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+
+  final List&lt;String&gt; items;
+  MyApp({Key key, @required this.items}):super(key:key)
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('ListView Demo'),
+        ),
+
+        // ListView
+//        body: ListView(
+//          children: &lt;Widget&gt;[
+//            ListTile(
+//              leading: Icon(Icons.access_time),
+//              title: Text('access_time'),
+//            ),
+//
+//            ListTile(
+//              leading: Icon(Icons.account_balance),
+//              title: Text('account_balance'),
+//            ),
+//          ],
+//        )
+
+
+        //横向滚动
+//        body: Center(    //1.让横向列表居中
+//          child: Container(
+//            height: 300,
+//            child: MyList(),
+//          ),
+//        ),
+      
+      body: ListView.builder(
+        itemBuilder:(BuildContext context, int index) {
+          return Text('${items[index]}');
+        },
+        itemCount: items.length,
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563952183164.png" alt="dynamic listview"></p>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhengyanfeng.github.io/post/flutter-image-tu-pian-zu-jian">
+              <h3 class="post-title">
+                Flutter-Image 图片组件
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '602216f311fac9383a87',
+    clientSecret: '6284ed4af0af2547c053a4dd8e71a5783b4c3569',
+    repo: 'zhengyanfeng.github.io',
+    owner: 'zhengyanfeng',
+    admin: ['zhengyanfeng'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhengyanfeng.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
