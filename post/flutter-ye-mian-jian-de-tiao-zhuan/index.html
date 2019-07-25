@@ -1,0 +1,375 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flutter-页面间的跳转 | fatpanda</title>
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1564052868916">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhengyanfeng.github.io">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1564052868916" alt="">
+  </a>
+  <h1 class="site-title">
+    fatpanda
+  </h1>
+  <p class="site-description">
+    学而时习之
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zhengyanfeng" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/awesomeyanfeng" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2309146301/profile?is_hot=1" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Flutter-页面间的跳转
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-07-25 ·
+              </time>
+              
+                <a href="https://zhengyanfeng.github.io/tag/X7eMu99QN" class="post-tag">
+                  # flutter
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>在App中，到处都存在页面间的跳转，从A页面跳转到B页面，可以更加方便使用，所以在 Flutter 中页面间的跳转是怎样实现的呢？</p>
+<h2 id="push-和-pop">Push 和 POP</h2>
+<p>我们可以看一个简单的例子：</p>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MaterialApp(
+  title: '导航演示',
+  home: FirstScreen(),
+));
+
+
+class FirstScreen extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('导航 Demo'),
+        ),
+
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          
+          children: &lt;Widget&gt;[
+            Text('页面1',
+              style: TextStyle(
+
+              ),
+            ),
+
+            RaisedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; SecondScreen()));
+              },
+              child: Text('跳转'),
+            ),
+          ],
+        ),
+    );
+  }
+}
+
+
+class SecondScreen extends StatelessWidget{
+  
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('页面2'),
+        ),
+        
+        body: Center(
+          child: RaisedButton(onPressed: (){ Navigator.pop(context);},
+            child: Text('返回'),
+          ),
+        ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1564044552605.png" alt="navigation"></p>
+<p>点击屏幕中间的跳转按钮可以跳转到第二个页面。</p>
+<p><img src="https://zhengyanfeng.github.io/post-images/1564044627709.png" alt="navigator page2"></p>
+<h2 id="参数传递-接收">参数传递、接收</h2>
+<p>把参数数据传递到下一级页面</p>
+<pre><code>
+import 'package:flutter/material.dart';
+
+
+class Product{
+  final String title;
+  final String description;
+  Product(this.title, this.description);
+}
+
+void main() =&gt; runApp(MaterialApp(
+  title: '参数传递',
+  home: ProductListView(products: List.generate(20, (i) =&gt; Product('Product $i', 'This is product serial number is: $i'))),
+));
+
+
+class ProductListView extends StatelessWidget {
+
+  final List&lt;Product&gt; products;
+
+  ProductListView({Key key, @required this.products}):super(key:key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('ProductList')),
+
+      body: ListView.builder(
+          itemCount: products.length,
+          itemBuilder:(context,index){
+            return ListTile(
+              title: Text(products[index].title),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; ProductDetail(product: products[index])));
+              },
+            );
+          }
+      ),
+    );
+  }
+}
+
+class ProductDetail extends StatelessWidget {
+  final Product product;
+  ProductDetail({Key key, @required this.product}):super(key:key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('${product.title}'),),
+      body: Center(
+        child: Text('${product.description}'),
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1564048735928.png" alt="first page"></p>
+<p><img src="https://zhengyanfeng.github.io/post-images/1564048754709.png" alt="second page"></p>
+<h2 id="数据回传">数据回传</h2>
+<p>把数据回传到父级页面</p>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MaterialApp(
+  title: '数据回传',
+  home: FatherPage(),
+));
+
+class FatherPage extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('父页面')),
+
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: &lt;Widget&gt;[
+//            Text('这里显示来自子级页面的数据'),
+            MyButton(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyButton extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+
+    return RaisedButton(
+      child: Text('跳转到子页面'),
+      onPressed: (){
+        navigateToNextPage(context);
+      },
+    );
+  }
+
+  navigateToNextPage(BuildContext context) async {  //启动异步方法
+    final result = await Navigator.push(context,  MaterialPageRoute(builder: (context) =&gt; SonPage()));
+
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text('$result')));
+  }
+}
+
+class SonPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('子页面')),
+
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: &lt;Widget&gt;[
+            RaisedButton(
+              child: Text('第一个button'),
+              onPressed: (){
+                Navigator.pop(context,'点击了子页面第一个button');
+              },
+            ),
+
+            RaisedButton(
+              child: Text('第二个button'),
+              onPressed: (){
+                Navigator.pop(context,'点击了子页面第二个button');
+              },
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p>例子的效果图：</p>
+<p><img src="https://zhengyanfeng.github.io/post-images/1564052591534.png" alt=""></p>
+<p>点击跳转：</p>
+<p><img src="https://zhengyanfeng.github.io/post-images/1564052613443.png" alt=""></p>
+<p>点击第一个button：</p>
+<p><img src="https://zhengyanfeng.github.io/post-images/1564052632796.png" alt=""></p>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhengyanfeng.github.io/post/flutter-viewlist-qia-pian-zu-jian-bu-ju">
+              <h3 class="post-title">
+                Flutter-Card卡片组件布局
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '602216f311fac9383a87',
+    clientSecret: '6284ed4af0af2547c053a4dd8e71a5783b4c3569',
+    repo: 'zhengyanfeng.github.io',
+    owner: 'zhengyanfeng',
+    admin: ['zhengyanfeng'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhengyanfeng.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
