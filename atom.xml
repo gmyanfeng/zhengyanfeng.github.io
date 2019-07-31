@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhengyanfeng.github.io</id>
     <title>fatpanda</title>
-    <updated>2019-07-25T11:19:10.633Z</updated>
+    <updated>2019-07-31T08:21:02.523Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhengyanfeng.github.io"/>
     <link rel="self" href="https://zhengyanfeng.github.io/atom.xml"/>
@@ -16,6 +16,10 @@
         <link href="https://zhengyanfeng.github.io/post/flutter-ye-mian-jian-de-tiao-zhuan">
         </link>
         <updated>2019-07-25T08:45:23.000Z</updated>
+        <summary type="html"><![CDATA[<p>在App中，到处都存在页面间的跳转，从A页面跳转到B页面，可以更加方便使用，所以在 Flutter 中页面间的跳转是怎样实现的呢？</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在App中，到处都存在页面间的跳转，从A页面跳转到B页面，可以更加方便使用，所以在 Flutter 中页面间的跳转是怎样实现的呢？</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Flutter-Card卡片组件布局]]></title>
@@ -30,6 +34,108 @@
         <link href="https://zhengyanfeng.github.io/post/flutter-stack-bu-ju">
         </link>
         <updated>2019-07-24T10:20:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>Stack 可以处理一些层叠的布局</p>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+  
+  @override
+  Widget build(BuildContext context) {
+    
+    var stack = Stack(
+      alignment: FractionalOffset(0.5, 0.8), // 1
+      children: &lt;Widget&gt;[
+        CircleAvatar(
+          backgroundImage: NetworkImage('http://img5.mtime.cn/mg/2019/01/25/100903.64806042_170X256X4.jpg'),
+          radius: 100.0,
+        ),
+
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.lightBlue,
+          ),
+
+          padding: EdgeInsets.all(5),
+          child: Text('fat panda'),
+        )
+      ],
+    );
+    
+    return MaterialApp(
+      title: 'Stack Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Stack Demo'),
+        ),
+        
+        body: Center(
+          child: stack,
+        ),
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563965795927.png" alt="stack"></p>
+<ol>
+<li>alignment 控制层叠的位置，有 X 轴距离和 Y 轴距离，值从0~1，从上级容器的左上角开始</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<p>Stack 可以处理一些层叠的布局</p>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+  
+  @override
+  Widget build(BuildContext context) {
+    
+    var stack = Stack(
+      alignment: FractionalOffset(0.5, 0.8), // 1
+      children: &lt;Widget&gt;[
+        CircleAvatar(
+          backgroundImage: NetworkImage('http://img5.mtime.cn/mg/2019/01/25/100903.64806042_170X256X4.jpg'),
+          radius: 100.0,
+        ),
+
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.lightBlue,
+          ),
+
+          padding: EdgeInsets.all(5),
+          child: Text('fat panda'),
+        )
+      ],
+    );
+    
+    return MaterialApp(
+      title: 'Stack Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Stack Demo'),
+        ),
+        
+        body: Center(
+          child: stack,
+        ),
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563965795927.png" alt="stack"></p>
+<ol>
+<li>alignment 控制层叠的位置，有 X 轴距离和 Y 轴距离，值从0~1，从上级容器的左上角开始</li>
+</ol>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Flutter-水平垂直布局]]></title>
@@ -37,6 +143,114 @@
         <link href="https://zhengyanfeng.github.io/post/flutter-ui-bu-ju">
         </link>
         <updated>2019-07-24T09:13:27.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="row-水平布局">Row 水平布局</h1>
+<p>Row 控件可以分为灵活布局和非灵活布局</p>
+<h2 id="非灵活布局">非灵活布局</h2>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+
+    return MaterialApp(
+      title: 'Row Demo',
+
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Row Demo'),
+        ),
+
+        body: Row(
+          children: &lt;Widget&gt;[
+            RaisedButton(onPressed: (){
+
+            },
+              color: Colors.redAccent,
+              child: Text('red button'),
+            ),
+
+            RaisedButton(onPressed: (){
+
+            },
+              color: Colors.greenAccent,
+              child: Text('green button'),
+            ),
+
+            RaisedButton(onPressed: (){
+
+              },
+            color: Colors.blueAccent,
+            child: Text('blue button'),
+            ),
+          ],
+        )
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563960746714.png" alt="row_no_flexiable"></p>
+<p>如图3个按钮排成一列，但是并没有根据屏幕宽度大小自动更改 button 的宽度，平分屏幕的宽度。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="row-水平布局">Row 水平布局</h1>
+<p>Row 控件可以分为灵活布局和非灵活布局</p>
+<h2 id="非灵活布局">非灵活布局</h2>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+
+    return MaterialApp(
+      title: 'Row Demo',
+
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Row Demo'),
+        ),
+
+        body: Row(
+          children: &lt;Widget&gt;[
+            RaisedButton(onPressed: (){
+
+            },
+              color: Colors.redAccent,
+              child: Text('red button'),
+            ),
+
+            RaisedButton(onPressed: (){
+
+            },
+              color: Colors.greenAccent,
+              child: Text('green button'),
+            ),
+
+            RaisedButton(onPressed: (){
+
+              },
+            color: Colors.blueAccent,
+            child: Text('blue button'),
+            ),
+          ],
+        )
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563960746714.png" alt="row_no_flexiable"></p>
+<p>如图3个按钮排成一列，但是并没有根据屏幕宽度大小自动更改 button 的宽度，平分屏幕的宽度。</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Flutter-GridView 网格列表]]></title>
@@ -44,6 +258,84 @@
         <link href="https://zhengyanfeng.github.io/post/flutter-gridview-wang-ge-lie-biao">
         </link>
         <updated>2019-07-24T07:32:18.000Z</updated>
+        <summary type="html"><![CDATA[<p>网格列表相当于 iOS 中 UICollectionView</p>
+<h3 id="例子1">例子1</h3>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      title: 'Flutter GridView Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter GridView Demo'),
+        ),
+        body: GridView.count(
+          crossAxisCount: 5,   // 一列放置 item 的数量
+          crossAxisSpacing: 10,   // 网格之间的间距
+          padding: EdgeInsets.all(20),  //距离外部容器的间距
+          children: &lt;Widget&gt;[
+            Text('I am fat panda 001'),
+            Text('I am fat panda 002'),
+            Text('I am fat panda 003'),
+            Text('I am fat panda 004'),
+            Text('I am fat panda 005'),
+            Text('I am fat panda 006'),         
+          ],
+        )
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563956149411.png" alt="gridview text"></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>网格列表相当于 iOS 中 UICollectionView</p>
+<h3 id="例子1">例子1</h3>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      title: 'Flutter GridView Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter GridView Demo'),
+        ),
+        body: GridView.count(
+          crossAxisCount: 5,   // 一列放置 item 的数量
+          crossAxisSpacing: 10,   // 网格之间的间距
+          padding: EdgeInsets.all(20),  //距离外部容器的间距
+          children: &lt;Widget&gt;[
+            Text('I am fat panda 001'),
+            Text('I am fat panda 002'),
+            Text('I am fat panda 003'),
+            Text('I am fat panda 004'),
+            Text('I am fat panda 005'),
+            Text('I am fat panda 006'),         
+          ],
+        )
+      ),
+    );
+  }
+}
+
+</code></pre>
+<p><img src="https://zhengyanfeng.github.io/post-images/1563956149411.png" alt="gridview text"></p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Flutter-ListView 列表组件]]></title>
