@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhengyanfeng.github.io</id>
     <title>fatpanda</title>
-    <updated>2019-07-31T08:21:02.523Z</updated>
+    <updated>2019-09-19T02:12:46.196Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhengyanfeng.github.io"/>
     <link rel="self" href="https://zhengyanfeng.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://zhengyanfeng.github.io/images/avatar.png</logo>
     <icon>https://zhengyanfeng.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, fatpanda</rights>
+    <entry>
+        <title type="html"><![CDATA[Markdown Cheatsheet 存档]]></title>
+        <id>https://zhengyanfeng.github.io/post/markdown-cheatsheet-cun-dang</id>
+        <link href="https://zhengyanfeng.github.io/post/markdown-cheatsheet-cun-dang">
+        </link>
+        <updated>2019-07-31T09:58:27.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Flutter-页面间的跳转]]></title>
         <id>https://zhengyanfeng.github.io/post/flutter-ye-mian-jian-de-tiao-zhuan</id>
@@ -397,17 +404,6 @@ class MyApp extends StatelessWidget{
 <p>上篇文章我们运行了一个简单的 Hello World 程序，里面已经包含了一个文本组件，不过我们用的都是默认的属性。</p>
 <h2 id="text-widget">Text Widget</h2>
 <p>我们重新创建一个新的项目，删除默认的模板代码，实现一个 Text Widget，代码如下：</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Flutter学习-HelloWorld]]></title>
-        <id>https://zhengyanfeng.github.io/post/flutter-xue-xi-udacity-ke-cheng</id>
-        <link href="https://zhengyanfeng.github.io/post/flutter-xue-xi-udacity-ke-cheng">
-        </link>
-        <updated>2019-07-17T17:22:49.000Z</updated>
-        <summary type="html"><![CDATA[<p>什么是Flutter？这是一个Google出的一个跨平台的框架，支持Android和iOS。大家可以去搜索下，这个文章系列是记录我的学习过程。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>什么是Flutter？这是一个Google出的一个跨平台的框架，支持Android和iOS。大家可以去搜索下，这个文章系列是记录我的学习过程。</p>
 ]]></content>
     </entry>
 </feed>
