@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>iOS单例设计模式 | fatpanda</title>
-<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1568859141105">
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1578381388644">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zhengyanfeng.github.io">
-  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1568859141105" alt="">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1578381388644" alt="">
   </a>
   <h1 class="site-title">
     fatpanda
@@ -217,7 +217,7 @@ static InfoManager_NonARC *_infoManager = nil;
 @end
 </code></pre>
 <p>如果要给某个类关闭ARC，如图在TARGETS -&gt; Build Phases -&gt; Compile Sources 里给相应的class加 <strong>-fno-objc-arc</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/13280985-7489e4c1a1c7a8c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WX20180904-143419@2x.png"></p>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/13280985-7489e4c1a1c7a8c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WX20180904-143419@2x.png" loading="lazy"></figure>
 <p>如何在Swift下创建一个单例</p>
 <pre><code>//  LocationManager.swift
 import UIKit
@@ -244,7 +244,7 @@ class LocationManager: NSObject {
 <pre><code>LocationManager.shared.requestForLocation()
 </code></pre>
 <p>如果尝试使用init的方法就会报错<br>
-<img src="https://upload-images.jianshu.io/upload_images/13280985-c011b2be9c06f088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WX20180904-144831@2x.png"></p>
+<img src="https://upload-images.jianshu.io/upload_images/13280985-c011b2be9c06f088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WX20180904-144831@2x.png" loading="lazy"></p>
 
             </div>
           </article>

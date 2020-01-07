@@ -2,20 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhengyanfeng.github.io</id>
     <title>fatpanda</title>
-    <updated>2019-09-19T02:12:46.196Z</updated>
+    <updated>2020-01-07T07:16:48.183Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhengyanfeng.github.io"/>
     <link rel="self" href="https://zhengyanfeng.github.io/atom.xml"/>
     <subtitle>学而时习之</subtitle>
     <logo>https://zhengyanfeng.github.io/images/avatar.png</logo>
     <icon>https://zhengyanfeng.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, fatpanda</rights>
+    <rights>All rights reserved 2020, fatpanda</rights>
+    <entry>
+        <title type="html"><![CDATA[数据结构和算法-时间和空间复杂度]]></title>
+        <id>https://zhengyanfeng.github.io/post/shu-ju-jie-gou-he-suan-fa-shi-jian-he-kong-jian-fu-za-du</id>
+        <link href="https://zhengyanfeng.github.io/post/shu-ju-jie-gou-he-suan-fa-shi-jian-he-kong-jian-fu-za-du">
+        </link>
+        <updated>2019-10-17T03:08:32.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Swift 和 Objective-C 的对比]]></title>
+        <id>https://zhengyanfeng.github.io/post/swift-he-objective-c-de-dui-bi</id>
+        <link href="https://zhengyanfeng.github.io/post/swift-he-objective-c-de-dui-bi">
+        </link>
+        <updated>2019-09-19T00:19:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>Swift，苹果于2014年 WWDC（苹果开发者大会）发布的新开发语言（已开源），可与 Objective-C 共同运行于 macOS 和 iOS 平台，用于搭建基于苹果平台的应用程序。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Swift，苹果于2014年 WWDC（苹果开发者大会）发布的新开发语言（已开源），可与 Objective-C 共同运行于 macOS 和 iOS 平台，用于搭建基于苹果平台的应用程序。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Markdown Cheatsheet 存档]]></title>
         <id>https://zhengyanfeng.github.io/post/markdown-cheatsheet-cun-dang</id>
         <link href="https://zhengyanfeng.github.io/post/markdown-cheatsheet-cun-dang">
         </link>
         <updated>2019-07-31T09:58:27.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[前端-HTML基础知识]]></title>
+        <id>https://zhengyanfeng.github.io/post/qian-duan-html-ji-chu-zhi-shi</id>
+        <link href="https://zhengyanfeng.github.io/post/qian-duan-html-ji-chu-zhi-shi">
+        </link>
+        <updated>2019-07-31T08:24:42.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Flutter-页面间的跳转]]></title>
@@ -87,7 +112,7 @@ class MyApp extends StatelessWidget{
 }
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563965795927.png" alt="stack"></p>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563965795927.png" alt="stack" loading="lazy"></figure>
 <ol>
 <li>alignment 控制层叠的位置，有 X 轴距离和 Y 轴距离，值从0~1，从上级容器的左上角开始</li>
 </ol>
@@ -138,7 +163,7 @@ class MyApp extends StatelessWidget{
 }
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563965795927.png" alt="stack"></p>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563965795927.png" alt="stack" loading="lazy"></figure>
 <ol>
 <li>alignment 控制层叠的位置，有 X 轴距离和 Y 轴距离，值从0~1，从上级容器的左上角开始</li>
 </ol>
@@ -201,7 +226,7 @@ class MyApp extends StatelessWidget{
 }
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563960746714.png" alt="row_no_flexiable"></p>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563960746714.png" alt="row_no_flexiable" loading="lazy"></figure>
 <p>如图3个按钮排成一列，但是并没有根据屏幕宽度大小自动更改 button 的宽度，平分屏幕的宽度。</p>
 ]]></summary>
         <content type="html"><![CDATA[<h1 id="row-水平布局">Row 水平布局</h1>
@@ -255,7 +280,7 @@ class MyApp extends StatelessWidget{
 }
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563960746714.png" alt="row_no_flexiable"></p>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563960746714.png" alt="row_no_flexiable" loading="lazy"></figure>
 <p>如图3个按钮排成一列，但是并没有根据屏幕宽度大小自动更改 button 的宽度，平分屏幕的宽度。</p>
 ]]></content>
     </entry>
@@ -302,7 +327,7 @@ class MyApp extends StatelessWidget{
 }
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563956149411.png" alt="gridview text"></p>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563956149411.png" alt="gridview text" loading="lazy"></figure>
 ]]></summary>
         <content type="html"><![CDATA[<p>网格列表相当于 iOS 中 UICollectionView</p>
 <h3 id="例子1">例子1</h3>
@@ -341,7 +366,7 @@ class MyApp extends StatelessWidget{
 }
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563956149411.png" alt="gridview text"></p>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563956149411.png" alt="gridview text" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
@@ -353,57 +378,6 @@ class MyApp extends StatelessWidget{
         <summary type="html"><![CDATA[<p>ListView 就是相当于 iOS 中的 UITableView。简单实现一个列表的组件</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>ListView 就是相当于 iOS 中的 UITableView。简单实现一个列表的组件</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Flutter-Image 图片组件]]></title>
-        <id>https://zhengyanfeng.github.io/post/flutter-image-tu-pian-zu-jian</id>
-        <link href="https://zhengyanfeng.github.io/post/flutter-image-tu-pian-zu-jian">
-        </link>
-        <updated>2019-07-23T11:09:19.000Z</updated>
-        <summary type="html"><![CDATA[<p>导入图片的方式有以下几种：</p>
-<ul>
-<li>Image.asset : 加载项目资源目录中的图片，用的是相对路径，导入后会增加包的体积。</li>
-<li>Image.network : 网络图片资源</li>
-<li>Image.file : 加载本地图片，使用的是绝对路径，和包大小无关</li>
-<li>Image.memory : 加载 Uint8List 资源的图片</li>
-</ul>
-]]></summary>
-        <content type="html"><![CDATA[<p>导入图片的方式有以下几种：</p>
-<ul>
-<li>Image.asset : 加载项目资源目录中的图片，用的是相对路径，导入后会增加包的体积。</li>
-<li>Image.network : 网络图片资源</li>
-<li>Image.file : 加载本地图片，使用的是绝对路径，和包大小无关</li>
-<li>Image.memory : 加载 Uint8List 资源的图片</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Flutter-Container 容器组件]]></title>
-        <id>https://zhengyanfeng.github.io/post/flutter-container-rong-qi-zu-jian</id>
-        <link href="https://zhengyanfeng.github.io/post/flutter-container-rong-qi-zu-jian">
-        </link>
-        <updated>2019-07-23T09:33:42.000Z</updated>
-        <summary type="html"><![CDATA[<p>相当于 HTML 中的 div 标签</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>相当于 HTML 中的 div 标签</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Flutter-Text Widget 文本组件的使用]]></title>
-        <id>https://zhengyanfeng.github.io/post/flutter-text-widget-wen-ben-zu-jian-de-shi-yong</id>
-        <link href="https://zhengyanfeng.github.io/post/flutter-text-widget-wen-ben-zu-jian-de-shi-yong">
-        </link>
-        <updated>2019-07-22T16:59:48.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="在-flutter-里面一切皆组件widget">在 Flutter 里面一切皆组件（Widget）。</h2>
-<p>上篇文章我们运行了一个简单的 Hello World 程序，里面已经包含了一个文本组件，不过我们用的都是默认的属性。</p>
-<h2 id="text-widget">Text Widget</h2>
-<p>我们重新创建一个新的项目，删除默认的模板代码，实现一个 Text Widget，代码如下：</p>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="在-flutter-里面一切皆组件widget">在 Flutter 里面一切皆组件（Widget）。</h2>
-<p>上篇文章我们运行了一个简单的 Hello World 程序，里面已经包含了一个文本组件，不过我们用的都是默认的属性。</p>
-<h2 id="text-widget">Text Widget</h2>
-<p>我们重新创建一个新的项目，删除默认的模板代码，实现一个 Text Widget，代码如下：</p>
 ]]></content>
     </entry>
 </feed>

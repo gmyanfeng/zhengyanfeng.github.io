@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Flutter-水平垂直布局 | fatpanda</title>
-<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1568859141105">
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1578381388644">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zhengyanfeng.github.io">
-  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1568859141105" alt="">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1578381388644" alt="">
   </a>
   <h1 class="site-title">
     fatpanda
@@ -151,7 +151,7 @@ class MyApp extends StatelessWidget{
 }
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563960746714.png" alt="row_no_flexiable"></p>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563960746714.png" alt="row_no_flexiable" loading="lazy"></figure>
 <p>如图3个按钮排成一列，但是并没有根据屏幕宽度大小自动更改 button 的宽度，平分屏幕的宽度。</p>
 <!-- more -->
 <h2 id="灵活布局">灵活布局</h2>
@@ -179,7 +179,7 @@ class MyApp extends StatelessWidget{
             )
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563961300146.png" alt="row ui"></p>
+<figure data-type="image" tabindex="2"><img src="https://zhengyanfeng.github.io/post-images/1563961300146.png" alt="row ui" loading="lazy"></figure>
 <p>可以看出 button 根据屏幕的大小自动更改了宽度，这样更加美观。</p>
 <h2 id="混合模式">混合模式</h2>
 <pre><code>
@@ -202,7 +202,7 @@ class MyApp extends StatelessWidget{
             ),
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563961560694.png" alt="row"></p>
+<figure data-type="image" tabindex="3"><img src="https://zhengyanfeng.github.io/post-images/1563961560694.png" alt="row" loading="lazy"></figure>
 <p>从图上看出，中间黄色的按钮使用了灵活布局，会自动填满剩余的空白区域。</p>
 <h1 id="column-垂直布局">Column 垂直布局</h1>
 <pre><code>
@@ -217,7 +217,7 @@ class MyApp extends StatelessWidget{
         
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563962073086.png" alt="column1"></p>
+<figure data-type="image" tabindex="4"><img src="https://zhengyanfeng.github.io/post-images/1563962073086.png" alt="column1" loading="lazy"></figure>
 <p>默认 Text 组件的文字以最长的文字居中为准，可以加个对齐属性：</p>
 <pre><code>
 // 垂直布局
@@ -231,7 +231,7 @@ class MyApp extends StatelessWidget{
         ),
 
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563962235505.png" alt="column"></p>
+<figure data-type="image" tabindex="5"><img src="https://zhengyanfeng.github.io/post-images/1563962235505.png" alt="column" loading="lazy"></figure>
 <ul>
 <li>CrossAxisAlignment.start : 左对齐</li>
 <li>CrossAxisAlignment.end ：右对齐</li>
@@ -245,7 +245,7 @@ mainAxisAlignment: MainAxisAlignment.center,
 如果使用 Column 组件，则 mainAxisAlignment 主轴为垂直方向</p>
 <p>如果使用 Raw 组件，则 crossAxisAlignment 副轴为垂直方向<br>
 如果使用 Column 组件，则 crossAxisAlignment 副轴为水平方向</p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563962943305.png" alt=""></p>
+<figure data-type="image" tabindex="6"><img src="https://zhengyanfeng.github.io/post-images/1563962943305.png" alt="" loading="lazy"></figure>
 <pre><code>
 // 垂直布局
         body: Column(
@@ -259,7 +259,7 @@ mainAxisAlignment: MainAxisAlignment.center,
         ),
 				
 </code></pre>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563963412456.png" alt=""></p>
+<figure data-type="image" tabindex="7"><img src="https://zhengyanfeng.github.io/post-images/1563963412456.png" alt="" loading="lazy"></figure>
 
             </div>
           </article>

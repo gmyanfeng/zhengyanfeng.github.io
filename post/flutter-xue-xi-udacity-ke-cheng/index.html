@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Flutter学习-HelloWorld | fatpanda</title>
-<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1568859141105">
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1578381388644">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zhengyanfeng.github.io">
-  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1568859141105" alt="">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1578381388644" alt="">
   </a>
   <h1 class="site-title">
     fatpanda
@@ -121,11 +121,11 @@ StackOverflow：<a href="https://stackoverflow.com/questions/tagged/flutter">htt
 Gitter：<a href="https://gitter.im/flutter/flutter">https://gitter.im/flutter/flutter</a></p>
 <h2 id="hello-world">Hello World</h2>
 <p>打开 Android Studio，选择 <strong>Start a new Flutter project</strong></p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563532500284.png" alt="start a new flutter project image"></p>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563532500284.png" alt="start a new flutter project image" loading="lazy"></figure>
 <p>这个选择是需要安装插件才有的，在 Android Studio 的菜单栏中选择 Preferences -&gt; Plugins，然后在搜索框中搜索 Flutter，安装的过程中还会提示你是否安装 Dart (Flutter 的开发语言)，默认同意继续就好了。</p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563532943454.png" alt="Flutter Plugins"></p>
+<figure data-type="image" tabindex="2"><img src="https://zhengyanfeng.github.io/post-images/1563532943454.png" alt="Flutter Plugins" loading="lazy"></figure>
 <p>出现配置应用的窗口：</p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563533338778.png" alt="flutter project configration"></p>
+<figure data-type="image" tabindex="3"><img src="https://zhengyanfeng.github.io/post-images/1563533338778.png" alt="flutter project configration" loading="lazy"></figure>
 <ul>
 <li>Project name: flutter_app_helloworld</li>
 <li>Flutter SDK path: 自己选择之前配置的 Flutter 开发环境目录（比如我的是放在了这个文件路劲下：~/Documents/development/flutter）</li>
@@ -134,7 +134,7 @@ Gitter：<a href="https://gitter.im/flutter/flutter">https://gitter.im/flutter/f
 <li>Create project offline -&gt; 这个自己选择，个人建议可以勾选。</li>
 </ul>
 <p>然后可以选择 Next，接着出现下一个页面：</p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563534379868.png" alt="package config"></p>
+<figure data-type="image" tabindex="4"><img src="https://zhengyanfeng.github.io/post-images/1563534379868.png" alt="package config" loading="lazy"></figure>
 <ul>
 <li>Company domain: 公司的域名反向（比如 com.baidu）</li>
 <li>勾选上 Include Kotlin support for Android code (支持安卓)</li>
@@ -143,9 +143,9 @@ Gitter：<a href="https://gitter.im/flutter/flutter">https://gitter.im/flutter/f
 <p>点击 Finish 开始创建项目</p>
 <h2 id="运行项目">运行项目</h2>
 <p>废话不多说，先跑起来看看，我选择运行在 iOS 的模拟器上。如图，选择 Open iOS Simulator，系统会启动一个模拟器（当然这步需要你之前已经安装了 Xcode，iOS 开发的 IDE），选择 iPhone XR 模拟器，然后点击Debug。等待模拟器启动并打开项目，默认的项目如下图所示。</p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563535318227.png" alt="open a simulator"></p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563793753870.png" alt="select iphone xr"></p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563793852253.png" alt="default project"></p>
+<figure data-type="image" tabindex="5"><img src="https://zhengyanfeng.github.io/post-images/1563535318227.png" alt="open a simulator" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://zhengyanfeng.github.io/post-images/1563793753870.png" alt="select iphone xr" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://zhengyanfeng.github.io/post-images/1563793852253.png" alt="default project" loading="lazy"></figure>
 <p>Flutter 项目的代码主要在 main.dart 文件，打开该文件，把默认的代码全部删除。Hello World 的代码如下：</p>
 <pre><code>import 'package:flutter/material.dart';
 
@@ -176,7 +176,7 @@ class MyApp extends StatelessWidget{
 }
 </code></pre>
 <p>然后保存，如果运行的模式选择的是 Debug 模式，模拟器会自动刷新页面，如图：</p>
-<p><img src="https://zhengyanfeng.github.io/post-images/1563795394378.png" alt=""></p>
+<figure data-type="image" tabindex="8"><img src="https://zhengyanfeng.github.io/post-images/1563795394378.png" alt="" loading="lazy"></figure>
 <p>这样，第一个 Hello World 的 Flutter 项目就完成了。</p>
 <p>示例代码在 <a href="https://github.com/zhengyanfeng/Flutter-Learning">Github</a></p>
 

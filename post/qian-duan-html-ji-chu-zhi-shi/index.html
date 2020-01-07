@@ -1,0 +1,340 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>前端-HTML基础知识 | fatpanda</title>
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1578381388644">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhengyanfeng.github.io">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1578381388644" alt="">
+  </a>
+  <h1 class="site-title">
+    fatpanda
+  </h1>
+  <p class="site-description">
+    学而时习之
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zhengyanfeng" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/awesomeyanfeng" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2309146301/profile?is_hot=1" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              前端-HTML基础知识
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-07-31 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>在前端中，HTML，CSS 和 JavaScript 各有自己的作用。打个比方，假如前端是一个人，那么 HTML 属于骨骼，支撑起整个结构，CSS 属于衣服，管理样式，而 JavaScript 属于肌肉，动态调整页面的样式和内容。</p>
+<p>在开头我们先介绍一个网站，关于 Web 开发的所有资料都可以在这个网站找到<br>
+<a href="https://developer.mozilla.org/zh-CN/"><strong>Mozilla</strong></a></p>
+<h2 id="标签">标签</h2>
+<pre><code>
+&lt;p&gt;Hello World !!&lt;/p&gt;
+
+// &lt;p&gt; 为开始标签，&lt;/p&gt; 为结束标签
+
+</code></pre>
+<p>比如代码上面 的 p 就是标签，标签中间的为内容。</p>
+<pre><code>格式为：元素 = &lt;开始标签&gt;内容&lt;结束标签&gt;
+</code></pre>
+<h2 id="空元素">空元素</h2>
+<p>如果没有内容的话，则这个元素为空元素，比如图片标签和换行</p>
+<pre><code>
+&lt;img src=&quot;xxxxxxx&quot; /&gt;
+
+&lt;br /&gt; // 换行
+
+</code></pre>
+<h2 id="属性">属性</h2>
+<p>可以在标签里面增加属性，比如图片里面的 src 就是属性，它的值是图片的链接。</p>
+<pre><code>
+// class = &quot;property&quot;  这个就是属性
+&lt;p class = &quot;property&quot;&gt;Hello World !!&lt;/p&gt;
+
+</code></pre>
+<h2 id="hello-world">Hello World</h2>
+<p>刚开始学习一些语法的时候，如果还不行用一些代码编辑器或者 IDE，我们可以找一些线上的工具练习使用。比如下面的两个网站，可以在线编辑代码，实时浏览效果，但是代码提示就没有那么友好了。</p>
+<p>中文：<br>
+<a href="http://code.ftqq.com">http://code.ftqq.com</a></p>
+<p>英文：<br>
+<a href="https://codepan.net">https://codepan.net</a></p>
+<pre><code>
+// 说明文档类型
+&lt;!doctype html&gt;
+
+&lt;html&gt;
+  &lt;head&gt;
+  	&lt;meta charset = &quot;UTF-8&quot;  /&gt;    // 字符集
+		&lt;meta name=&quot;keywords&quot; content =&quot;课程&quot; /&gt; // 关键词
+		&lt;meta http-equiv=&quot;refresh&quot; content =&quot;30&quot; /&gt;  // 定时刷新
+		&lt;meta name=&quot;viewport&quot; content =&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+		
+    &lt;title&gt;Hello World Demo !!&lt;/title&gt;  // 显示在浏览器的 tab 栏
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      Hello World !!
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<p>第一个简单的 Hello World 的例子。</p>
+<ol>
+<li>字符集：charset 是网页支持的元数据字符集，一般我们就写 UTF8 的。</li>
+<li>关键词：name content 为关键词，有助于搜索引擎的优化</li>
+<li>定时刷新</li>
+<li>指定 ViewPort (让网页的内容更加适合设备的大小)</li>
+</ol>
+<ul>
+<li>ASCII 128 个字符，主要以英文为主：<a href="http://www.asciitable.com/">http://www.asciitable.com/</a></li>
+<li>GB2313 收录了6763个汉字</li>
+<li>UTF8 每个字符包含1~6个字节<br>
+1. US-ASCII: 1个字节<br>
+2. 带有附加符号的拉丁文、希腊文等：2个字节<br>
+3. 汉字：3个字节<br>
+4. 其他：4~6个字节</li>
+</ul>
+<h2 id="head-中的其他元素">head 中的其他元素</h2>
+<ul>
+<li>style：页面内的 CSS</li>
+<li>link：引入独立文件中的 CSS</li>
+<li>script：引入 JavaScript 文件</li>
+<li>base：指定页面中链接的相对路径</li>
+</ul>
+<p>base 里面指定的是 页面中 a 标签跳转的页面</p>
+<pre><code>
+&lt;base target=&quot;_blank&quot;&gt;  //  让网页中所有 a 标签的点击都新开一个标签页
+</code></pre>
+<h2 id="body-里面的元素">body 里面的元素</h2>
+<p>body 就是网页的主页面</p>
+<h3 id="文字样式">文字样式</h3>
+<h4 id="1h1~h6-标题">1.h1~h6 标题</h4>
+<pre><code>
+&lt;h1&gt;一级标题&lt;/h1&gt;
+&lt;h2&gt;二级标题&lt;/h2&gt;
+&lt;h3&gt;三级标题&lt;/h3&gt;
+&lt;h4&gt;四级标题&lt;/h4&gt;
+&lt;h5&gt;五级标题&lt;/h5&gt;
+&lt;h6&gt;六级标题&lt;/h6&gt;
+
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1564571844657.png" alt="h标签" loading="lazy"></figure>
+<h4 id="2加粗">2.加粗</h4>
+<pre><code>&lt;p&gt;
+      &lt;strong&gt;我的博客&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+      &lt;b&gt;我的博客&lt;/b&gt;
+&lt;/p&gt;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://zhengyanfeng.github.io/post-images/1564572277954.png" alt="strong tag" loading="lazy"></figure>
+<h4 id="斜体">斜体</h4>
+<p>英文里面作强调的时候经常使用斜体</p>
+<pre><code>
+&lt;em&gt;我的博客&lt;/em&gt;
+</code></pre>
+<h4 id="small">small</h4>
+<p>可以作标注使用，让用户注意力放在正文上面。</p>
+<pre><code>
+&lt;small&gt;我的博客&lt;/small&gt;
+</code></pre>
+<h4 id="ins下划线和-del删除">ins（下划线）和 del（删除）</h4>
+<pre><code>
+&lt;del&gt;我的博客&lt;/del&gt;
+&lt;ins&gt;我的博客&lt;/ins&gt;
+
+&lt;span class=&quot;underline&quot;&gt;我的博客&lt;/span&gt;
+</code></pre>
+<h4 id="上下标和-abbr">上下标和 abbr</h4>
+<pre><code>
+&lt;p&gt;
+      X&lt;sup&gt;2&lt;/sup&gt; &amp;amp; X&lt;sub&gt;2&lt;/sub&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	什么是 &lt;abbr title=&quot;Hypertext Markup Language&quot;&gt;HTML&lt;/abbr&gt;
+&lt;/p&gt;
+</code></pre>
+<p>上下标一般用来数学公式表示，abbr 是给一些缩写增加说明。如图，HTML 是底部条虚线标识，当鼠标移动到上面，会有 HTML 的全称 Hypertext Markup Language 显示出来。</p>
+<figure data-type="image" tabindex="3"><img src="https://zhengyanfeng.github.io/post-images/1564732873500.png" alt="sup_sub_abbr" loading="lazy"></figure>
+<h4 id="链接">链接</h4>
+<pre><code>
+&lt;p&gt;
+      &lt;!-- target=&quot;_blank&quot; 点击链接时新开一个tab展示 --&gt;
+      我的博客是：&lt;a href=&quot;https://zhengyanfeng.github.io&quot; target=&quot;__blank&quot;&gt;fat-panda&lt;/a&gt;
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+      &lt;!-- target=&quot;fatpanda标识&quot; 点击链接时会重新加载打开对应网页 --&gt;
+      我的微博是：&lt;a href=&quot;https://www.weibo.com/p/1005052309146301/home?from=page_100505&amp;mod=TAB&amp;is_all=1#place&quot; target=&quot;fatpanda&quot;&gt;fat-panda&lt;/a&gt;
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://zhengyanfeng.github.io/post-images/1564735760526.png" alt="a link" loading="lazy"></figure>
+<h4 id="段落-p-br">段落 p &amp; br</h4>
+<p>br 为 换行符，p 标签已经默认给了一个段落之间行间距。</p>
+<figure data-type="image" tabindex="5"><img src="https://zhengyanfeng.github.io/post-images/1564739241803.png" alt="p margin" loading="lazy"></figure>
+<p>CSS 里面可以用 margin 更改行间距，line-height 更改行高，通过这些调整，使得文字在网页中显示更加美观。</p>
+<figure data-type="image" tabindex="6"><img src="https://zhengyanfeng.github.io/post-images/1564741373949.png" alt="line height" loading="lazy"></figure>
+<h4 id="段落-pre-code">段落 pre &amp; code</h4>
+<p>pre 可以保留文字原来的格式<br>
+code 使中间的字体使用等宽字体</p>
+<figure data-type="image" tabindex="7"><img src="https://zhengyanfeng.github.io/post-images/1564741831954.png" alt="pre code" loading="lazy"></figure>
+<h4 id="列表">列表</h4>
+<p>ol 为有序列表<br>
+ul 为无序列表</p>
+<pre><code>
+&lt;body&gt;
+    &lt;h1&gt;
+      诗人列表
+    &lt;/h1&gt;
+    &lt;ol&gt;
+      &lt;li&gt;李白&lt;/li&gt;
+      &lt;li&gt;白居易&lt;/li&gt;
+      &lt;li&gt;李商隐&lt;/li&gt;
+    &lt;/ol&gt;
+    
+    &lt;h1&gt;
+      古诗列表
+    &lt;/h1&gt;
+    &lt;ul&gt;
+      &lt;li&gt;长恨歌&lt;/li&gt;
+      &lt;li&gt;琵琶行&lt;/li&gt;
+      &lt;li&gt;蜀道难&lt;/li&gt;
+    &lt;/ul&gt;
+    
+  &lt;/body&gt;
+	
+</code></pre>
+<figure data-type="image" tabindex="8"><img src="https://zhengyanfeng.github.io/post-images/1565004222590.png" alt="ol ul" loading="lazy"></figure>
+<h4 id="dl-子列表">dl 子列表</h4>
+<p>dl 为外部标签，dt 和 dd 为内部的，dd 为 dt 的子列表</p>
+<figure data-type="image" tabindex="9"><img src="https://zhengyanfeng.github.io/post-images/1565004701648.png" alt="dt" loading="lazy"></figure>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhengyanfeng.github.io/post/flutter-ye-mian-jian-de-tiao-zhuan">
+              <h3 class="post-title">
+                Flutter-页面间的跳转
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '602216f311fac9383a87',
+    clientSecret: '6284ed4af0af2547c053a4dd8e71a5783b4c3569',
+    repo: 'zhengyanfeng.github.io',
+    owner: 'zhengyanfeng',
+    admin: ['zhengyanfeng'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhengyanfeng.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
