@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fat Panda</title>
-<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1578639222897">
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1578723977497">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zhengyanfeng.github.io">
-  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1578639222897" alt="">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1578723977497" alt="">
   </a>
   <h1 class="site-title">
     Fat Panda
@@ -84,6 +84,64 @@
 
     
         <div class="post-container">
+  
+    <article class="post">
+      <a href="https://zhengyanfeng.github.io/post/flutter-gridview-wang-ge-lie-biao">
+        <h2 class="post-title">Flutter-GridView 网格列表</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-07-24 ·
+        </time>
+        
+          <a href="https://zhengyanfeng.github.io/tag/X7eMu99QN" class="post-tag">
+            # flutter
+          </a>
+        
+      </div>
+      
+      <div class="post-abstract">
+        <p>网格列表相当于 iOS 中 UICollectionView</p>
+<h3 id="例子1">例子1</h3>
+<pre><code>
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      title: 'Flutter GridView Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter GridView Demo'),
+        ),
+        body: GridView.count(
+          crossAxisCount: 5,   // 一列放置 item 的数量
+          crossAxisSpacing: 10,   // 网格之间的间距
+          padding: EdgeInsets.all(20),  //距离外部容器的间距
+          children: &lt;Widget&gt;[
+            Text('I am fat panda 001'),
+            Text('I am fat panda 002'),
+            Text('I am fat panda 003'),
+            Text('I am fat panda 004'),
+            Text('I am fat panda 005'),
+            Text('I am fat panda 006'),         
+          ],
+        )
+      ),
+    );
+  }
+}
+
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://zhengyanfeng.github.io/post-images/1563956149411.png" alt="gridview text" loading="lazy"></figure>
+
+      </di>
+    </article>
   
     <article class="post">
       <a href="https://zhengyanfeng.github.io/post/flutter-listview-lie-biao-zu-jian">

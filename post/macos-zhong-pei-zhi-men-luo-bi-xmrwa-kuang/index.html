@@ -1,0 +1,237 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>macOS 中配置门罗币(XMR)挖矿 | Fat Panda</title>
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1578723977497">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhengyanfeng.github.io">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1578723977497" alt="">
+  </a>
+  <h1 class="site-title">
+    Fat Panda
+  </h1>
+  <p class="site-description">
+    学而时习之
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zhengyanfeng" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/awesomeyanfeng" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2309146301/profile?is_hot=1" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              macOS 中配置门罗币(XMR)挖矿
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2020-01-11 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>门罗币(Monero) 是强调隐私和安全的数字货币，具体的信息我就不介绍了，大家可以去官网了解。</p>
+<p>官网地址：<a href="https://web.getmonero.org/zh-cn/index.html">https://web.getmonero.org/zh-cn/index.html</a></p>
+<p>维基百科：<a href="https://zh.wikipedia.org/wiki/%E9%97%A8%E7%BD%97%E5%B8%81">门罗币介绍</a></p>
+<p><a href="%5Bhttps://coinmarketcap.com/zh/currencies/monero/%5D(https://coinmarketcap.com/zh/currencies/monero/)">CoinMarketCap</a> 币价：￥334.87（2019.12.20）</p>
+<p>废话不多说，我们进入配置步骤。首先我们来到挖矿的网页：<a href="https://xmrig.com/">https://xmrig.com/</a></p>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/13280985-382eb17274df41a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="xmrig.com.png" loading="lazy"></figure>
+<h2 id="1点击-wizard">1.点击 Wizard</h2>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/13280985-5eb1ec87180087e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="wizard.png" loading="lazy"></figure>
+<h2 id="2添加配置点击-new-configuration">2.添加配置，点击 New configuration</h2>
+<figure data-type="image" tabindex="3"><img src="https://upload-images.jianshu.io/upload_images/13280985-4e855dcb6cddb5e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="configuration.png" loading="lazy"></figure>
+<p>点击 Add pool，然后选择 supportXMR.com 这个矿池地址，配置中输入你自己的钱包地址，如图</p>
+<figure data-type="image" tabindex="4"><img src="https://upload-images.jianshu.io/upload_images/13280985-a8274c2002e8d200.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="add_pool.png" loading="lazy"></figure>
+<h3 id="3配置-backends">3.配置 Backends</h3>
+<p>点击选择 Backends，打开 CPU，其他的可以自己选择</p>
+<figure data-type="image" tabindex="5"><img src="https://upload-images.jianshu.io/upload_images/13280985-7d318d12f209fe13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="backends.png" loading="lazy"></figure>
+<h3 id="4选择捐献的比例">4.选择捐献的比例</h3>
+<p>点击 Misc，去选择捐献给该网站的比例，默认为 5%</p>
+<p>到此矿池已经配置好了，接下来用去下载源码，在 macOS 下编译</p>
+<h3 id="5点击-docs-查看文档选择-xmrig-build-from-source-macos">5.点击 Docs 查看文档，选择 xmrig -&gt; build from source -&gt; macOS</h3>
+<figure data-type="image" tabindex="6"><img src="https://upload-images.jianshu.io/upload_images/13280985-1fb635e7b2852596.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="xmrig_build.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://upload-images.jianshu.io/upload_images/13280985-de76f82191aaa82b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="macos.png" loading="lazy"></figure>
+<p>按照文档的步骤配置环境<br>
+<img src="https://upload-images.jianshu.io/upload_images/13280985-8a0c6cd1311cba81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build.png" loading="lazy"></p>
+<h3 id="6安装-homebrew">6.安装 Homebrew</h3>
+<p><a href="https://brew.sh/">Homebrew 官网</a></p>
+<p>打开终端，输入命令安装 Homebrew</p>
+<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+<figure data-type="image" tabindex="8"><img src="https://upload-images.jianshu.io/upload_images/13280985-caf94e35ade5cf87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="homebrew.png" loading="lazy"></figure>
+<h3 id="7安装依赖">7.安装依赖</h3>
+<pre><code>brew install cmake libuv openssl hwloc
+</code></pre>
+<figure data-type="image" tabindex="9"><img src="https://upload-images.jianshu.io/upload_images/13280985-84f3a4af38940371.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="homebrew2.png" loading="lazy"></figure>
+<p>安装完毕后，下载源码</p>
+<h3 id="github-下载源码">Github 下载源码</h3>
+<p>找个存放源码的文件夹，在终端的输入命令下载源码</p>
+<pre><code>git clone https://github.com/xmrig/xmrig.git
+</code></pre>
+<figure data-type="image" tabindex="10"><img src="https://upload-images.jianshu.io/upload_images/13280985-d414136124aab8f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="git_download.png" loading="lazy"></figure>
+<p>创建 build 文件夹</p>
+<pre><code>mkdir xmrig/build
+</code></pre>
+<figure data-type="image" tabindex="11"><img src="https://upload-images.jianshu.io/upload_images/13280985-9b24cdb3af967490.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="create_folder.png" loading="lazy"></figure>
+<p>在终端切到 xmrig 文件夹下</p>
+<pre><code>cd xmrig
+</code></pre>
+<p>下载  hwloc 文件夹</p>
+<pre><code>curl -O https://download.open-mpi.org/release/hwloc/v2.1/hwloc-2.1.0.tar.bz2
+</code></pre>
+<p>解压缩包</p>
+<pre><code>tar xjf hwloc-2.1.0.tar.bz2
+</code></pre>
+<p>切到 hwloc-2.1.0 文件夹</p>
+<pre><code>cd hwloc-2.1.0
+</code></pre>
+<p>配置 hwloc</p>
+<pre><code>./configure --disable-shared --enable-static --disable-io --disable-libxml2
+</code></pre>
+<figure data-type="image" tabindex="12"><img src="https://upload-images.jianshu.io/upload_images/13280985-4073f01a9e9ef257.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hwloc.png" loading="lazy"></figure>
+<h3 id="安装下面的命令继续编译">安装下面的命令继续编译</h3>
+<pre><code>make -j$(sysctl -n hw.logicalcpu)
+cd ../build
+cmake .. -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl -DHWLOC_INCLUDE_DIR=../hwloc-2.1.0/include -DHWLOC_LIBRARY=../hwloc-2.1.0/hwloc/.libs/libhwloc.a
+make -j$(sysctl -n hw.logicalcpu)
+</code></pre>
+<figure data-type="image" tabindex="13"><img src="https://upload-images.jianshu.io/upload_images/13280985-99f6d636dd8dc7fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="make_sysctl.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://upload-images.jianshu.io/upload_images/13280985-ccb0a7ce56e7bfe0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="cmake.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://upload-images.jianshu.io/upload_images/13280985-4d6fefa97b205613.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="make_sysctl2.png" loading="lazy"></figure>
+<p><strong>上述的步骤都顺利走完了的话，到此就完成了所有的配置</strong></p>
+<p>从终端进入到我们 build 后的文件夹，如下图<br>
+<img src="https://upload-images.jianshu.io/upload_images/13280985-2878b270677d9f3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build_folder_mine.png" loading="lazy"></p>
+<p>然后我们回到一开始配置的网站，进入 Wizard -&gt; Result, 在 Command line 选择 macOS，复制该命令，在终端中粘贴，开始挖矿了。</p>
+<figure data-type="image" tabindex="16"><img src="https://upload-images.jianshu.io/upload_images/13280985-657f7e84745abf29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mining.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="17"><img src="https://upload-images.jianshu.io/upload_images/13280985-8d4d58263fa6c488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mining_xmr.png" loading="lazy"></figure>
+<h3 id="查看挖矿状态">查看挖矿状态</h3>
+<p>我们可以进入这个网站 [<a href="https://supportxmr.com/">https://supportxmr.com/</a><br>
+](<a href="https://supportxmr.com/">https://supportxmr.com/</a><br>
+)，输入之前配置是的钱包地址，就可以看到挖矿的状态，下图是我的。</p>
+<figure data-type="image" tabindex="18"><img src="https://upload-images.jianshu.io/upload_images/13280985-3e2a67084c883bc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="poolstate.png" loading="lazy"></figure>
+<p>OK，这个教程就想到这里吧</p>
+<p>欢迎关注我的公众号：<br>
+<img src="https://zhengyanfeng.github.io/post-images/qrcode_for_wechat.jpg" alt="" loading="lazy"></p>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhengyanfeng.github.io/post/mac-xiao-lu-gong-ju-ruan-jian-tui-jian-openinterminal">
+              <h3 class="post-title">
+                Mac 效率工具软件推荐-OpenInTerminal
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '602216f311fac9383a87',
+    clientSecret: '6284ed4af0af2547c053a4dd8e71a5783b4c3569',
+    repo: 'zhengyanfeng.github.io',
+    owner: 'zhengyanfeng',
+    admin: ['zhengyanfeng'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhengyanfeng.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
