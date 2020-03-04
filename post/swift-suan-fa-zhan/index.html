@@ -1,0 +1,465 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Swift 算法-栈 | Fat Panda</title>
+<link rel="shortcut icon" href="https://zhengyanfeng.github.io/favicon.ico?v=1583328378885">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zhengyanfeng.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhengyanfeng.github.io">
+  <img class="avatar" src="https://zhengyanfeng.github.io/images/avatar.png?v=1583328378885" alt="">
+  </a>
+  <h1 class="site-title">
+    Fat Panda
+  </h1>
+  <p class="site-description">
+    学而时习之
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zhengyanfeng" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/awesomeyanfeng" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2309146301/profile?is_hot=1" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Swift 算法-栈
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2020-01-09 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>Swift 语言种没有内设有栈这种数据结构，这里我们利用数组来实现下栈。</p>
+<h2 id="栈的特点">栈的特点</h2>
+<ul>
+<li>后进先出（LIFO: last-in first-out）的结构，最后进栈的元素最先被移出</li>
+<li>最主要的操作为 <strong>push</strong> 和 <strong>pop</strong>，push 为添加元素到栈的顶部，pop 为移除栈顶部的元素</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://raw.githubusercontent.com/zhengyanfeng/PicGo_Assets/master/images/stack" alt="stack" loading="lazy"></figure>
+<h2 id="应用">应用</h2>
+<ul>
+<li>在开发应用中，涉及到的添加和删除或者撤销的操作，可以用到栈结构</li>
+<li>iOS 中 navigation 对 view controller 的 push 和 pop 的操作也是用到栈的这种结构</li>
+<li>局部变量的内存管理也是栈结构</li>
+<li>在寻找离开迷宫的路径也是栈的这种结构，比如撤回上一次的决定</li>
+</ul>
+<p>我们插入点 Swift 的基础知识</p>
+<h2 id="值类型和引用类型">值类型和引用类型</h2>
+<ul>
+<li>值类型 在被赋值给另外一个实例或者作为参数传递给函数时，总是被复制的，你修改其中一个的值不会影响另外一个值</li>
+<li>引用类型 在被赋值给另外一个实例或者作为参数传递给函数时，不会产生副本，而是创建新的引用。你修改其中一个的值会影响另外一个值。</li>
+</ul>
+<p>Swift 中结构体和类都可以用来自定义类型，在Objective-C编程中，结构体和类的区别很大，该用结构体还是类，往往一眼就能做出决定。但是，在Swift中，结构体不再像之前那么单纯，它里面增添了很多面向对象的特性，从而使得结构体可以执行一些原本只有类才能执行的任务。官方的建议：</p>
+<blockquote>
+<ol>
+<li>如果类型需要传值，就用结构体。这样可以保证赋值或者传参时，类型是复制的</li>
+<li>如果类型不支持或者没有必要支持子类继承，就用结构体</li>
+<li>如果类型所要实现的功能只是简单的存储数据，就考虑用结构体</li>
+<li>如果需要保证数据独立，就用结构体，因为结构体属于值类型，而类属于引用类型</li>
+</ol>
+</blockquote>
+<p>而栈主要用来存储数据，所以我们选择使用结构体</p>
+<h2 id="基本实现">基本实现</h2>
+<pre><code>/**
+ Swift 实现 栈结构
+ */
+//注释1
+public struct Stack&lt;Element&gt;{
+    //声明一个泛型数组
+    private var storage: [Element] = []
+    
+    public init () { }
+    
+    public init (_ element: [Element]) {
+        storage = element
+    }
+    //注释2
+    public mutating func push(_ element: Element) {
+        storage.append(element)
+    }
+    //注释3
+    @discardableResult
+    public mutating func pop() -&gt; Element? {
+        storage.popLast()
+    }
+    
+    public func peek() -&gt; Element? {
+        storage.last
+    }
+    
+    public var isEmpty: Bool {
+        peek() == nil
+    }
+}
+
+var stack = Stack&lt;Int&gt;()
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.push(4)
+print(stack)
+//打印效果：Stack&lt;Int&gt;(elements: [&quot;, &quot;关羽&quot;, &quot;张飞&quot;])
+</code></pre>
+<ul>
+<li>1&gt;Swift中声明泛型的语法，在类型名后面紧跟一对尖括号(&lt;&gt;)，尖括号内部使用特定的符号作为类型占位符。占位符可以是任何字母，也可以是字符串，在 Swift 中一般使用一个大写的字母T作为类型占位符</li>
+<li>2&gt;结构体是值类型，值类型的方法是不能对自身(self)进行修改的，如果非要对自身(self)进行修改，就必须用关键字 <strong>mutating</strong> 进行标记</li>
+<li>3&gt;<strong>@discardableResult</strong> 是 Swift 中的一个特性，用于抑制函数或者方法返回值被调用而没有使用其结果时的警告</li>
+</ul>
+<h2 id="扩展">扩展</h2>
+<p>1.遵循 <strong>CustomStringConvertible</strong> 协议，让打印 Stack 的 log 简洁，美观。<br>
+将数组里面的元素按照堆栈的样式打印出来。 由于你是将元素添加到数组的尾部，所以首先要做的是反转数组。然后用 joined(separator:) 方法来拼接数组里面的元素，元素之间用 separator 隔开</p>
+<pre><code>extension Stack: CustomStringConvertible {
+    
+    public var description: String {
+        //把 storage 数组转成字符串数组，然后反转，最后把元素用换行符拼接起来
+        &quot;&quot;&quot;
+        ---top---
+        \(storage.map{&quot;\($0)&quot;}.reversed().joined(separator: &quot;\n&quot;))
+        ---------
+        &quot;&quot;&quot;
+    }
+}
+
+let array = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;]
+var stack = Stack(array)
+print(stack)
+stack.pop()
+/*打印效果：
+---top---
+d
+c
+b
+a
+---------
+*/
+</code></pre>
+<p>2.在创建 Stack 实例的时候，使用var stringStack: Stack<String> = Stack() 或者 var intStack = Stack<Int>() 语法可能显得太啰嗦，如果希望像数组一样使用 var doubleStack: Stack = [1.0, 2.0, 3.0] 字面量语法，就必须遵守ExpressibleByArrayLiteral协议，实现相应的方法：</p>
+<pre><code>extension Stack: ExpressibleByArrayLiteral{
+    public init(arrayLiteral elements: Element...){
+        storage = elements
+    }
+}
+
+var stack:Stack = [1.0,2.0,3.0,4.0]
+print(stack)
+stack.pop()
+</code></pre>
+<p>所以完整的代码：</p>
+<pre><code>/**
+ Swift 实现 栈结构
+ */
+public struct Stack&lt;Element&gt;{
+    
+    private var storage: [Element] = []
+    
+    public init () { }
+    
+    public init (_ element: [Element]) {
+        storage = element
+    }
+    
+    public mutating func push(_ element: Element) {
+        storage.append(element)
+    }
+    
+    @discardableResult
+    public mutating func pop() -&gt; Element? {
+        storage.popLast()
+    }
+    
+    public func peek() -&gt; Element? {
+        storage.last
+    }
+    
+    public var isEmpty: Bool {
+        peek() == nil
+    }
+}
+
+extension Stack: CustomStringConvertible {
+    
+    public var description: String {
+        //把 storage 数组转成字符串数组，然后反转，最后把元素用换行符拼接起来
+        &quot;&quot;&quot;
+        ---top---
+        \(storage.map{&quot;\($0)&quot;}.reversed().joined(separator: &quot;\n&quot;))
+        ---------
+        &quot;&quot;&quot;
+    }
+}
+
+extension Stack: ExpressibleByArrayLiteral{
+    public init(arrayLiteral elements: Element...){
+        storage = elements
+    }
+}
+</code></pre>
+<p>代码项目地址 <a href="https://github.com/zhengyanfeng/Data_Structures_Algorithms/tree/master/Stack-Swift.playground">Github</a></p>
+<h2 id="题目">题目：</h2>
+<p>1.反转数组</p>
+<blockquote>
+<p>[1,2,3,4,5] 反转后：[5,4,3,2,1]</p>
+</blockquote>
+<p>代码实现：</p>
+<pre><code>let array: [Int] = [1, 2, 3, 4, 5]
+
+// 数组实现  时间复杂度 O(n)   空间复杂度 O(1)
+func printInReverse(_ array:[Int]){
+    var currentArray = array
+    if currentArray.count &lt; 2 {
+        print(currentArray.description)
+    }
+    
+    var low = 0
+    
+    var high = currentArray.count-1
+    
+    while low &lt; high {
+        (currentArray[low],currentArray[high]) = (currentArray[high],currentArray[low])
+        low += 1
+        high -= 1
+    }
+    
+    print(currentArray.description)
+}
+
+printInReverse(array)
+// 输出 [5,4,3,2,1]
+</code></pre>
+<p>这个问题用数组就可以解决，但是如果要用栈的结构解决的话，代码如下：</p>
+<pre><code>let array: [Int] = [1, 2, 3, 4, 5]
+// 栈实现
+func printInReverse2(_ array:[Int]){
+    
+    var stack = Stack(array)
+    
+    while stack.isEmpty == false {
+        print(stack.pop()!)
+    }
+}
+
+printInReverse2(array)
+</code></pre>
+<hr>
+<p>2.匹配花括号（）</p>
+<blockquote>
+<p>// 1<br>
+h((e))llo(world)() // balanced parentheses<br>
+// 2<br>
+(hello world // unbalanced parentheses</p>
+</blockquote>
+<p>代码实现：</p>
+<pre><code>func checkParentheses(_ testString: String) -&gt; Bool{
+    //判断字符串的长度
+    if testString.count &lt; 2 {
+        return false
+    }
+    
+    //拆分字符串成字符串数组
+    let array = testString.map({&quot;\($0)&quot;})
+    
+    var stack = Stack&lt;String&gt;()
+    
+    for item in array {
+        if item == &quot;(&quot; {
+            stack.push(item)
+        }else if(item == &quot;)&quot;) {
+            if let element = stack.peek() {
+                if element == &quot;(&quot; {
+                    // 如果匹配，就移除栈顶元素 &quot;(&quot;
+                    stack.pop()
+                }
+            }else{
+                stack.push(item)
+            }
+        }else{
+            
+        }
+    }
+    // 判断栈是否为空：就是看花括号是否一一匹配了
+    return stack.isEmpty == true
+}
+
+let testString1 = &quot;h((e))llo(world)()&quot;
+print(checkParentheses(testString1)) // true
+</code></pre>
+<hr>
+<ol start="3">
+<li>Facebook 的一道面试题：</li>
+</ol>
+<blockquote>
+<p>Given an absolute path for a file (Unix-style), simplify it.<br>
+For example,<br>
+path = &quot;/home/&quot;, =&gt; &quot;/home&quot;<br>
+path = &quot;/a/./b/../../c/&quot;, =&gt; &quot;/c&quot;</p>
+</blockquote>
+<p>代码实现：</p>
+<pre><code>func simplifyPath(path: String) -&gt; String {
+    // 判断传入的字符
+    if path.count == 0 {
+        return &quot;&quot;
+    }
+    
+    if path.count == 1 &amp;&amp; path == &quot;.&quot; {
+        return path
+    }
+    
+    //利用 &quot;/&quot; 拆分原路径 string 成数组
+    let pathArray = path.split(separator: &quot;/&quot;)
+    
+    print(pathArray) // 输出 [&quot;a&quot;, &quot;.&quot;, &quot;b&quot;, &quot;..&quot;, &quot;..&quot;, &quot;c&quot;]  正式环境可以删掉
+    
+    // 创建一个 String 类型的栈
+    var pathStack = Stack&lt;String&gt;()
+    
+    for char in pathArray {
+        switch char {
+        case &quot;.&quot;:
+            break
+        case &quot;..&quot;:
+            pathStack.pop()
+        default:
+            pathStack.push(String(char))
+        }
+    }
+    
+    // 判断 Stack 是否为空
+    if pathStack.isEmpty == true {
+        return &quot;/&quot;
+    }else{
+        let top = pathStack.peek()
+        return &quot;/&quot; + (top ?? &quot;&quot;)
+    }
+}
+
+let path_test = &quot;/a/./b/../../c/&quot;
+print(simplifyPath(path: path_test))
+// 输出: /c
+</code></pre>
+<p>其实这道题用数组也是可以实现的，这里就不放代码了，思路都一样。</p>
+<p>欢迎关注我的公众号：<br>
+<img src="https://raw.githubusercontent.com/zhengyanfeng/PicGo_Assets/master/images/qrcode_wechat.jpg" alt="wechat qrcode" loading="lazy"></p>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zhengyanfeng.github.io/post/shu-ju-jie-gou-he-suan-fa-shi-jian-he-kong-jian-fu-za-du/">
+              <h3 class="post-title">
+                数据结构和算法-时间和空间复杂度
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '602216f311fac9383a87',
+    clientSecret: '6284ed4af0af2547c053a4dd8e71a5783b4c3569',
+    repo: 'zhengyanfeng.github.io',
+    owner: 'zhengyanfeng',
+    admin: ['zhengyanfeng'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zhengyanfeng.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
